@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Environment variables & secrets
+.env
+*.json
+*credentials*
+config/*.json
+!config/schema_*.json
+
+# Data dumps / local raw artifacts
+*.csv
+*.geojson
+*.parquet
+*.sqlite
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
