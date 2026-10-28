@@ -6,3 +6,11 @@ geopandas>=0.14.2
 shapely>=2.0.2
 pyyaml>=6.0.1
 python-dotenv>=1.0.1
+db-dtypes==1.9.0
+
+
+
+google-cloud-bigquery-storage==2.43.0
+pyarrow==26.0.0
+
+
