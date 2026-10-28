@@ -124,7 +124,6 @@ corridor-viability-engine/
 ├── tests/
 │   └── test_pipeline_integration.py # Automated pytest test suite
 ├── .gitignore                       # Credentials, cache, and raw data exclusions
-├── LICENSE                          # MIT License
 ├── main.py                          # Unified end-to-end master pipeline runner
 ├── README.md                        # Project documentation
 └── requirements.txt                 # Frozen Python dependencies
