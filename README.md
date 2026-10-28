@@ -234,3 +234,10 @@ To view the dashboard, open `docs/corridor_viability_map.html` in any modern web
 
 - **Data Dictionary:** Complete schema contracts, SQL data types, field definitions, and mathematical formulations are documented in [`docs/data_dictionary.md`](docs/data_dictionary.md).
 - **Architecture Diagram:** Visual system layout is provided in [`docs/architecture_diagram.png`](docs/architecture_diagram.png).
+
+## Edge Case Analysis: Proportional Skew on Low-Volume Access Corridors
+* **Artifact Identified:** Segment Rt 1017 (Dauphin County) registered a composite travel plaza score of 60.52 despite carrying an AADT of only 149 vehicles, driven by an 86% truck share (128 daily trucks).
+* **Root Cause:** Unconditional evaluation of proportional metrics (`truck_pct`) without a baseline volume hurdle rate allowed low-volume industrial access spurs to capture full weighting in commercial share, charging voids, and retail deficits.
+* **Future Work & Interactive Volume Gating:**
+  * Implement dynamic client-side filtering via Leaflet layer masks, enabling stakeholders to establish minimum AADT/ADTT hurdle rates (e.g., slider inputs or DOT functional class brackets: <3k, 3k–10k, 10k–25k, >25k).
+  * Introduce mathematical dampeners into the MCDA formulation, scaling the truck percentage score by a logarithmic volume factor: $\min(1.0, \log_{10}(\text{adtt\_cur}) / 3.0)$.
