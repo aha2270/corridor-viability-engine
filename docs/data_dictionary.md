@@ -144,7 +144,12 @@ The primary feature-engineered analytics table combining demographic aggregation
 
 #### Multi-Criteria Decision Analysis (MCDA) Scoring Formulation
 
-$$\text{Viability Score} = \min\left(40.0, \frac{\text{adtt\_cur}}{15000} \times 40.0\right) + \min\left(25.0, \frac{\text{truck\_pct}}{50} \times 25.0\right) + \max(0.0, 20.0 - 5.0 \cdot \text{dc\_fast}) + \max(0.0, 15.0 - 5.0 \cdot \text{chains})$$
+```text
+Viability Score = MIN(40.0, (adtt_cur / 15000.0) * 40.0)
+                + MIN(25.0, (truck_pct / 50.0) * 25.0)
+                + MAX(0.0, 20.0 - (dc_fast_ports * 5.0))
+                + MAX(0.0, 15.0 - (major_chains * 5.0))
+```
 
 | Column Name | BigQuery Type | Calculation / Source | Weight / Cap |
 | :--- | :--- | :--- | :--- |
