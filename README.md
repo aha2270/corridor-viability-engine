@@ -22,6 +22,7 @@ Developed as the Capstone Project for the Master of Science in Data Engineering 
 - [Testing & Verification](#testing--verification)
 - [Interactive Visualization](#interactive-visualization)
 - [Data Dictionary & Documentation](#data-dictionary--documentation)
+- [Edge Case Analysis](#edge-case-analysis-proportional-skew-on-low-volume-access-corridors)
 
 ---
 
@@ -240,4 +241,7 @@ To view the dashboard, open `docs/corridor_viability_map.html` in any modern web
 * **Root Cause:** Unconditional evaluation of proportional metrics (`truck_pct`) without a baseline volume hurdle rate allowed low-volume industrial access spurs to capture full weighting in commercial share, charging voids, and retail deficits.
 * **Future Work & Interactive Volume Gating:**
   * Implement dynamic client-side filtering via Leaflet layer masks, enabling stakeholders to establish minimum AADT/ADTT hurdle rates (e.g., slider inputs or DOT functional class brackets: <3k, 3k–10k, 10k–25k, >25k).
-  * Introduce mathematical dampeners into the MCDA formulation, scaling the truck percentage score by a logarithmic volume factor: $\min(1.0, \log_{10}(\text{adtt\_cur}) / 3.0)$.
+  * Introduce mathematical dampeners into the MCDA formulation, scaling the truck percentage score by a logarithmic volume factor:
+    ```text
+    MIN(1.0, LOG10(adtt_cur) / 3.0)
+    ```
