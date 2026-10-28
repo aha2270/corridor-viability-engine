@@ -23,20 +23,18 @@ client = bigquery.Client(project=PROJECT_ID)
 
 def build_gold_travel_plaza_candidates():
     """
-    Filters high-scoring segments from the silver viability model, ranks
-    opportunities within each county, and formats geometries for downstream BI/GIS layers.
+    Builds the Gold Mart table with sequential priority ranking and spatial WKT exports.
     """
     table_id = f"{PROJECT_ID}.{DATASET_ID}.gold_travel_plaza_candidates"
     logger.info(f"Building Gold Mart table: {table_id}...")
 
-    # Threshold: viability score >= 200 isolates high-volume commercial freight
-    # corridors with low existing DC fast charging saturation.
     sql = f"""
     CREATE OR REPLACE TABLE `{table_id}` AS
     SELECT
       object_id,
       route_number,
       county_name,
+      segment_length_feet,
       cur_aadt,
       adtt_cur,
       truck_pct,
@@ -47,25 +45,23 @@ def build_gold_travel_plaza_candidates():
       avg_county_median_income,
       county_unemployment_rate,
       travel_plaza_viability_score,
-      DENSE_RANK() OVER (
+      ROW_NUMBER() OVER (
         PARTITION BY county_name
-        ORDER BY travel_plaza_viability_score DESC
+        ORDER BY travel_plaza_viability_score DESC, object_id ASC
       ) AS county_priority_rank,
       ST_ASTEXT(geom) AS wkt_geometry,
       geom
     FROM `{PROJECT_ID}.{DATASET_ID}.silver_corridor_viability`
     WHERE travel_plaza_viability_score >= 200
-    ORDER BY travel_plaza_viability_score DESC;
+    ORDER BY county_name, travel_plaza_viability_score DESC;
     """
-    query_job = client.query(sql)
-    query_job.result()
+    client.query(sql).result()
     logger.info(f"Successfully generated {table_id}.")
 
 
 def export_gold_candidates_locally(output_path: Path):
     """
-    Extracts the final gold candidates to a local CSV for direct import into
-    visualization tools such as Kepler.gl, QGIS, or Looker Studio.
+    Exports the gold tier table to CSV for geospatial visualization and BI ingestion.
     """
     logger.info(f"Exporting gold tier results to local path: {output_path}...")
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -76,6 +72,7 @@ def export_gold_candidates_locally(output_path: Path):
       route_number,
       county_name,
       county_priority_rank,
+      segment_length_feet,
       cur_aadt,
       adtt_cur,
       truck_pct,
