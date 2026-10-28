@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f50f83bd1b3eb4b93d060190a9d4ebfb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_f50f83bd1b3eb4b93d060190a9d4ebfb" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f50f83bd1b3eb4b93d060190a9d4ebfb = L.map(
+                "map_f50f83bd1b3eb4b93d060190a9d4ebfb",
+                {
+                    center: [40.2732, -76.8867],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_69fcd12f689f0b2b3a46d32be57a0920 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri, USGS, PennDOT, Garmin, \u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_69fcd12f689f0b2b3a46d32be57a0920.addTo(map_f50f83bd1b3eb4b93d060190a9d4ebfb);
+        
+    
+            var feature_group_1dcea91bf55189409b7866343dae82ef = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_8ea17bd8e500aed5806a49b835a9f83e = L.polyline(
+                [[40.2431207473172, -77.0968903265823], [40.2431732960714, -77.0963356510303], [40.2432762184441, -77.0954730114394], [40.2433442520351, -77.0949400194218], [40.2434726879738, -77.0940419610558], [40.2435813998445, -77.0933391200758], [40.2437782709863, -77.0921990007751], [40.243914047046, -77.0915182718258], [40.2441526382782, -77.090393723024], [40.244348764481, -77.089557333104], [40.2444877326047, -77.0890092493895], [40.244708374222, -77.0881774085381], [40.2448323527375, -77.0877322331277]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_f207771c7c19f0f0249facfdb9aefe77 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_99c57ae908a15db73586c3c38fb71bd8 = $(`<div id="html_99c57ae908a15db73586c3c38fb71bd8" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #1<br/>             <b>Viability Score:</b> 83.06 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 11,273 trucks<br/>             <b>Truck Share:</b> 36%<br/>             <b>Total AADT:</b> 31,506<br/>             <b>Segment Length:</b> 0.5 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 2<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_f207771c7c19f0f0249facfdb9aefe77.setContent(html_99c57ae908a15db73586c3c38fb71bd8);
+            
+        
+
+        poly_line_8ea17bd8e500aed5806a49b835a9f83e.bindPopup(popup_f207771c7c19f0f0249facfdb9aefe77)
+        ;
+
+        
+    
+    
+            poly_line_8ea17bd8e500aed5806a49b835a9f83e.bindTooltip(
+                `<div>
+                     Rank #1 - Route 81 (Cumberland) - Score: 83.06
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_cb64f05dbb7dbc6d0b4ca515c29eaf1a = L.polyline(
+                [[40.2448323527375, -77.0877322331277], [40.2448896217223, -77.0875265925895], [40.245092712229, -77.0868403902052], [40.2453056805883, -77.0861684755255], [40.245521150283, -77.0855061234121], [40.2458441248696, -77.0845805334793], [40.2462797109844, -77.0834284162796], [40.2467446733068, -77.0822743973465], [40.2470698532866, -77.0815230114086], [40.2472996111283, -77.0810059680805], [40.2475258946951, -77.0805241279318], [40.2477618828261, -77.0800262016512], [40.2480622054211, -77.0794269166606], [40.2485564781865, -77.0784755890966], [40.2488801307812, -77.077887250976], [40.2494767901257, -77.0768501513704], [40.2497522196383, -77.0763965722205], [40.250025281259, -77.0759574011494], [40.2503797577768, -77.0754055040866], [40.2507428430882, -77.0748599105022], [40.2511837872697, -77.0742224057895], [40.2516468037467, -77.07358946901], [40.252487832272, -77.0724523240311], [40.2533264466681, -77.0713231686684], [40.2538733832345, -77.070590224245], [40.2544044949665, -77.0698750125652], [40.254810461961, -77.0693353227088], [40.2551336794756, -77.0688891923893], [40.2557863375439, -77.06801444261], [40.2564839228408, -77.067073668454], [40.2569445536645, -77.0664582452293], [40.2573990751729, -77.0658460730075], [40.2580164711045, -77.0650195897085], [40.258790612437, -77.0639788438411], [40.259326533635, -77.0632554844417], [40.2595525425395, -77.0629461926928], [40.2597116935254, -77.0627239207454], [40.25986475806, -77.0625081058883], [40.2600250853523, -77.0622778254601], [40.2601610762933, -77.0620749732926], [40.2603748232877, -77.0617641984251], [40.2605326424369, -77.0615243455493], [40.2607244826376, -77.0612377748888], [40.2609417020296, -77.0608933805718], [40.2611515994735, -77.0605538551237], [40.2613068996223, -77.0603028290023], [40.26150098609, -77.0599826487738], [40.2617096081309, -77.0596351355062], [40.2618308196589, -77.0594196305678], [40.262025984974, -77.0590754482532], [40.2621617216854, -77.0588310112745], [40.2624137583801, -77.0583695152721], [40.2626645389942, -77.0579032312491], [40.2630386784327, -77.0571718382161], [40.2633932910587, -77.0564534294323], [40.2637403861778, -77.0557079050016], [40.2639096546308, -77.0553367831099], [40.2641502592332, -77.0548098151946], [40.2643925691336, -77.0542705798857], [40.2649746515611, -77.0529751769067], [40.2652550884084, -77.052351835931], [40.2655923964966, -77.0516127676923], [40.2657057881464, -77.051358254311], [40.265950411392, -77.0508117435467], [40.2671811817865, -77.0480895562833]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_8e862720a2c3a9482eee74c7f8d4d47d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d291d3f6def4e2641ca8c2b8660139c6 = $(`<div id="html_d291d3f6def4e2641ca8c2b8660139c6" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #2<br/>             <b>Viability Score:</b> 83.06 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 11,273 trucks<br/>             <b>Truck Share:</b> 36%<br/>             <b>Total AADT:</b> 31,506<br/>             <b>Segment Length:</b> 2.61 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 2<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_8e862720a2c3a9482eee74c7f8d4d47d.setContent(html_d291d3f6def4e2641ca8c2b8660139c6);
+            
+        
+
+        poly_line_cb64f05dbb7dbc6d0b4ca515c29eaf1a.bindPopup(popup_8e862720a2c3a9482eee74c7f8d4d47d)
+        ;
+
+        
+    
+    
+            poly_line_cb64f05dbb7dbc6d0b4ca515c29eaf1a.bindTooltip(
+                `<div>
+                     Rank #2 - Route 81 (Cumberland) - Score: 83.06
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_5f017dbe96858a6c2310a8e475c8e762 = L.polyline(
+                [[40.1922709199596, -77.1667142643726], [40.192335640309, -77.1665450702821], [40.1925622008454, -77.1660127528993], [40.1927781292869, -77.165572133744], [40.1930563756867, -77.1650248998358], [40.1933970806343, -77.1644036797826], [40.1934479106183, -77.16431894799], [40.193827629807, -77.1637080055619], [40.1941974273313, -77.1631614426953], [40.1946308163415, -77.1625887523286], [40.1951180285465, -77.1619964131117], [40.1957617101579, -77.1613259977202], [40.1962544337697, -77.1608550559326], [40.1968353276918, -77.1603705567706], [40.1974360218355, -77.1599242369065], [40.1981054072262, -77.159490099096], [40.1986235141616, -77.1591915215534], [40.1991382941699, -77.1589404550079], [40.1992155629119, -77.1589018993159], [40.1996068729087, -77.1587333636905], [40.2000555870335, -77.1585630745537], [40.2004194512884, -77.1584331377394], [40.2013610990313, -77.1581388460591]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_fed651c9c2a134c4cc6c4bb8fc1c2625 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6a52cbf0f62130c3b9f123619eb9495b = $(`<div id="html_6a52cbf0f62130c3b9f123619eb9495b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #3<br/>             <b>Viability Score:</b> 80.6 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 9,411 trucks<br/>             <b>Truck Share:</b> 41%<br/>             <b>Total AADT:</b> 22,735<br/>             <b>Segment Length:</b> 0.76 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 2<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_fed651c9c2a134c4cc6c4bb8fc1c2625.setContent(html_6a52cbf0f62130c3b9f123619eb9495b);
+            
+        
+
+        poly_line_5f017dbe96858a6c2310a8e475c8e762.bindPopup(popup_fed651c9c2a134c4cc6c4bb8fc1c2625)
+        ;
+
+        
+    
+    
+            poly_line_5f017dbe96858a6c2310a8e475c8e762.bindTooltip(
+                `<div>
+                     Rank #3 - Route 81 (Cumberland) - Score: 80.6
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_fc670971e2307b71303a1aca5cbd5f51 = L.polyline(
+                [[40.1923169576291, -77.1659790427199], [40.1925494017502, -77.1654687232817], [40.1927130367513, -77.1651283363492], [40.1930566316393, -77.1644801039554], [40.1932556011863, -77.1641304751552], [40.1933136123315, -77.1640378274084], [40.1936860771483, -77.1634461547414], [40.1942257874905, -77.162673509274], [40.1944593428655, -77.162377537744], [40.1947380860257, -77.162030541906], [40.1950211948899, -77.1617017189862], [40.1955425785462, -77.1611453213638], [40.1957273013412, -77.1609634745025], [40.1960940823993, -77.1606229079069], [40.1963194536032, -77.1604264328796], [40.196724216069, -77.1600916325698], [40.1970050385903, -77.1598762021916], [40.1972075728076, -77.1597330709225], [40.1975964708972, -77.159464618383], [40.1978177819511, -77.1593143625753], [40.1981003297247, -77.1591527520624], [40.1984138228713, -77.1589786109496], [40.1986044414259, -77.1588579591221], [40.1986991147909, -77.1588098642201]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_1e93cbb52caab4752af893bb2a374465 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8a04f292ad95118c0c73a6e65081964b = $(`<div id="html_8a04f292ad95118c0c73a6e65081964b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #4<br/>             <b>Viability Score:</b> 80.5 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 9,938 trucks<br/>             <b>Truck Share:</b> 38%<br/>             <b>Total AADT:</b> 26,247<br/>             <b>Segment Length:</b> 0.58 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 2<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_1e93cbb52caab4752af893bb2a374465.setContent(html_8a04f292ad95118c0c73a6e65081964b);
+            
+        
+
+        poly_line_fc670971e2307b71303a1aca5cbd5f51.bindPopup(popup_1e93cbb52caab4752af893bb2a374465)
+        ;
+
+        
+    
+    
+            poly_line_fc670971e2307b71303a1aca5cbd5f51.bindTooltip(
+                `<div>
+                     Rank #4 - Route 81 (Cumberland) - Score: 80.5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_0eac01d91f07d3e4d5e9f96aea287534 = L.polyline(
+                [[40.1876708690931, -77.1937544805877], [40.1877772933419, -77.1911511655892], [40.1877791805385, -77.1910563600891], [40.1878938094484, -77.1891230194094], [40.1879575594976, -77.1882561200074], [40.1879714876566, -77.1881154779698], [40.1880562616064, -77.1872594104535], [40.1880814085651, -77.1870604102619], [40.1882763081587, -77.1854869849906], [40.1884344710453, -77.1843920302874], [40.1886866044671, -77.182923812109], [40.1892451794921, -77.1798178726411], [40.1898333841887, -77.1766131768824], [40.1907739320768, -77.1714067876341], [40.191045993562, -77.169947323538], [40.1911641791142, -77.1694244968562], [40.1912823624019, -77.168901669276], [40.1914017717527, -77.168498313137], [40.1915123417516, -77.1680769457765], [40.1916176750679, -77.1677350056569], [40.191707191686, -77.1674815522877], [40.1918369490566, -77.167146469907], [40.1919640759324, -77.1668273119612], [40.1921139353202, -77.1664478779583], [40.1922706303799, -77.1660807535697], [40.1923169576291, -77.1659790427199]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_17b79b1c6b2780b063684d44c4e21abb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_29488eaab4af0fc4f5b1dad0b2d7444d = $(`<div id="html_29488eaab4af0fc4f5b1dad0b2d7444d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #5<br/>             <b>Viability Score:</b> 78.55 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 10,330 trucks<br/>             <b>Truck Share:</b> 32%<br/>             <b>Total AADT:</b> 32,171<br/>             <b>Segment Length:</b> 1.51 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 5<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_17b79b1c6b2780b063684d44c4e21abb.setContent(html_29488eaab4af0fc4f5b1dad0b2d7444d);
+            
+        
+
+        poly_line_0eac01d91f07d3e4d5e9f96aea287534.bindPopup(popup_17b79b1c6b2780b063684d44c4e21abb)
+        ;
+
+        
+    
+    
+            poly_line_0eac01d91f07d3e4d5e9f96aea287534.bindTooltip(
+                `<div>
+                     Rank #5 - Route 81 (Cumberland) - Score: 78.55
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_cb010cd7dddb1ac2d4f3c1e495aed2ee = L.polyline(
+                [[40.1878626282026, -77.1947943272414], [40.187867324228, -77.1946768536534], [40.1879250956764, -77.1932254258859], [40.187956788151, -77.1922437918592], [40.1879715116754, -77.1918795330963], [40.188002260533, -77.1911187417974], [40.1880064926431, -77.1910239165343], [40.1880447422046, -77.1902041238875], [40.188113769374, -77.1891255553534], [40.1881889836959, -77.1882540709502], [40.1882082913132, -77.1880303455287], [40.1883340641613, -77.186794019356], [40.1885207328836, -77.1853712271848], [40.1886799101553, -77.1843012447482], [40.1890491064664, -77.1822715426863], [40.1901255717592, -77.1763707880626], [40.1906079667816, -77.1737390297073], [40.1907914630136, -77.1727201452407], [40.1911477228931, -77.1707595972859], [40.1913028219843, -77.1699820146777], [40.1915671422157, -77.1688659899895], [40.191773722803, -77.1681362381786], [40.1920728800829, -77.1672319841321], [40.1922709199596, -77.1667142643726]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_7fd7c218f918676586c83dc5354a765f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_513ed0978cd829b5d806e5020850395f = $(`<div id="html_513ed0978cd829b5d806e5020850395f" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #6<br/>             <b>Viability Score:</b> 77.53 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 9,763 trucks<br/>             <b>Truck Share:</b> 33%<br/>             <b>Total AADT:</b> 29,247<br/>             <b>Segment Length:</b> 1.52 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 5<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_7fd7c218f918676586c83dc5354a765f.setContent(html_513ed0978cd829b5d806e5020850395f);
+            
+        
+
+        poly_line_cb010cd7dddb1ac2d4f3c1e495aed2ee.bindPopup(popup_7fd7c218f918676586c83dc5354a765f)
+        ;
+
+        
+    
+    
+            poly_line_cb010cd7dddb1ac2d4f3c1e495aed2ee.bindTooltip(
+                `<div>
+                     Rank #6 - Route 81 (Cumberland) - Score: 77.53
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_94957c78addbc986f00b0735078b31f4 = L.polyline(
+                [[40.0281443086569, -77.5091931009925], [40.0281549011001, -77.5091757823722], [40.0291532089668, -77.5075434689407], [40.0298425089568, -77.5065087507689], [40.0301804632625, -77.5060278727159]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_a79ea289e67184e8a4846b9fe54d92c6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fa4d542571f622f854473335e3ff12b4 = $(`<div id="html_fa4d542571f622f854473335e3ff12b4" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #7<br/>             <b>Viability Score:</b> 75.22 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 7,582 trucks<br/>             <b>Truck Share:</b> 40%<br/>             <b>Total AADT:</b> 18,979<br/>             <b>Segment Length:</b> 0.22 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_a79ea289e67184e8a4846b9fe54d92c6.setContent(html_fa4d542571f622f854473335e3ff12b4);
+            
+        
+
+        poly_line_94957c78addbc986f00b0735078b31f4.bindPopup(popup_a79ea289e67184e8a4846b9fe54d92c6)
+        ;
+
+        
+    
+    
+            poly_line_94957c78addbc986f00b0735078b31f4.bindTooltip(
+                `<div>
+                     Rank #7 - Route 81 (Cumberland) - Score: 75.22
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_91c7f29258bce05980a2f189bdce68e9 = L.polyline(
+                [[40.0301804632625, -77.5060278727159], [40.0303283759535, -77.5058174055297], [40.0309981852166, -77.5049155068659], [40.0311122291724, -77.5047712122784], [40.0327852680798, -77.5026543143451], [40.0342231913141, -77.5009587837722], [40.0348308349138, -77.5002583430906], [40.0357404840279, -77.499132701039], [40.0368571135671, -77.4978006467964], [40.0374219983017, -77.4971302960836], [40.0381084836099, -77.4963566714525], [40.0386143832614, -77.4958193145209], [40.0392485061479, -77.4951957947805], [40.0399834186235, -77.4945200335148], [40.0408348329255, -77.4938018214619], [40.040985618567, -77.4936854797512]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_22631eb8960dfdae7214dacd1c1bb0ef = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9774a274df8e004d9d55f91a5e19dc2d = $(`<div id="html_9774a274df8e004d9d55f91a5e19dc2d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #8<br/>             <b>Viability Score:</b> 75.22 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 7,582 trucks<br/>             <b>Truck Share:</b> 40%<br/>             <b>Total AADT:</b> 18,979<br/>             <b>Segment Length:</b> 0.99 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_22631eb8960dfdae7214dacd1c1bb0ef.setContent(html_9774a274df8e004d9d55f91a5e19dc2d);
+            
+        
+
+        poly_line_91c7f29258bce05980a2f189bdce68e9.bindPopup(popup_22631eb8960dfdae7214dacd1c1bb0ef)
+        ;
+
+        
+    
+    
+            poly_line_91c7f29258bce05980a2f189bdce68e9.bindTooltip(
+                `<div>
+                     Rank #8 - Route 81 (Cumberland) - Score: 75.22
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_dc73b9dff3277b73024e798b77f81b88 = L.polyline(
+                [[40.040985618567, -77.4936854797512], [40.0421655236625, -77.4927750911096], [40.0432247979195, -77.492034524481], [40.0446932260447, -77.4910572050626], [40.0480991742246, -77.4885779959139], [40.0491379432829, -77.4877432750637], [40.0519170105674, -77.4857347166486], [40.0537361020651, -77.4844158811154], [40.0545396149151, -77.4838298310038], [40.0557374418591, -77.4829707568262], [40.0577021683606, -77.4815884472333], [40.0584494972589, -77.4810446179401], [40.0587733283208, -77.4808039952081]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_adb07f1aad75020aba388d494a888786 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8841833e8a55d2869c68347adb9a78f0 = $(`<div id="html_8841833e8a55d2869c68347adb9a78f0" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #9<br/>             <b>Viability Score:</b> 75.22 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 7,582 trucks<br/>             <b>Truck Share:</b> 40%<br/>             <b>Total AADT:</b> 18,979<br/>             <b>Segment Length:</b> 1.41 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_adb07f1aad75020aba388d494a888786.setContent(html_8841833e8a55d2869c68347adb9a78f0);
+            
+        
+
+        poly_line_dc73b9dff3277b73024e798b77f81b88.bindPopup(popup_adb07f1aad75020aba388d494a888786)
+        ;
+
+        
+    
+    
+            poly_line_dc73b9dff3277b73024e798b77f81b88.bindTooltip(
+                `<div>
+                     Rank #9 - Route 81 (Cumberland) - Score: 75.22
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_5cb11b2978b2462f5a343fa2852f8ec6 = L.polyline(
+                [[40.027933127366, -77.5089744276962], [40.028169082136, -77.5085467981799], [40.0284548249771, -77.5080656793783], [40.028725405504, -77.5076124119439], [40.0289657873354, -77.5072211992309], [40.0294440756268, -77.5065016010776], [40.0299365460478, -77.5058188024099], [40.030379839023, -77.5052389704367], [40.0307903288332, -77.5047192159931], [40.0309344969897, -77.5045412139213], [40.0324882046363, -77.50262279875], [40.0336803030707, -77.5011492337989], [40.0343173516725, -77.500341604341], [40.0351448980168, -77.4993147958353], [40.0365537767278, -77.497613280686], [40.0370891756068, -77.4970115801255], [40.0377658663136, -77.4962765480173], [40.0386102346923, -77.4954294986882], [40.0393232855694, -77.4947628418478], [40.0402566012275, -77.493941125908], [40.0407426718818, -77.4935177005073], [40.0409334118041, -77.4933697587598]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_dee67b5c8b70279aaf8d181a8d1c78ef = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0cb62c48c9ead5c09104e2af3688d136 = $(`<div id="html_0cb62c48c9ead5c09104e2af3688d136" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #10<br/>             <b>Viability Score:</b> 74.65 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 7,555 trucks<br/>             <b>Truck Share:</b> 39%<br/>             <b>Total AADT:</b> 19,617<br/>             <b>Segment Length:</b> 1.22 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_dee67b5c8b70279aaf8d181a8d1c78ef.setContent(html_0cb62c48c9ead5c09104e2af3688d136);
+            
+        
+
+        poly_line_5cb11b2978b2462f5a343fa2852f8ec6.bindPopup(popup_dee67b5c8b70279aaf8d181a8d1c78ef)
+        ;
+
+        
+    
+    
+            poly_line_5cb11b2978b2462f5a343fa2852f8ec6.bindTooltip(
+                `<div>
+                     Rank #10 - Route 81 (Cumberland) - Score: 74.65
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_2faf82f03f4c04cb86c632e552e07ed4 = L.polyline(
+                [[40.0409334118041, -77.4933697587598], [40.0431395729562, -77.4916585849245], [40.0441425201192, -77.4909443344421], [40.0458554848838, -77.4896994563079], [40.0476928788535, -77.4883653305502], [40.0488121815659, -77.4876191314847], [40.051826828367, -77.4854601600567], [40.0529558699685, -77.4846370436433], [40.0535339121322, -77.4842256484809], [40.0544546041891, -77.4835584966688], [40.056183648169, -77.4822926716188], [40.0574633626644, -77.4813700092956], [40.0585777669604, -77.4805660737101]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_51b72626a42d5bd37798e01b5cf150ed = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d16c30ebf362fc5d6084778aa7a20c42 = $(`<div id="html_d16c30ebf362fc5d6084778aa7a20c42" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #11<br/>             <b>Viability Score:</b> 74.65 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 7,555 trucks<br/>             <b>Truck Share:</b> 39%<br/>             <b>Total AADT:</b> 19,617<br/>             <b>Segment Length:</b> 1.4 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_51b72626a42d5bd37798e01b5cf150ed.setContent(html_d16c30ebf362fc5d6084778aa7a20c42);
+            
+        
+
+        poly_line_2faf82f03f4c04cb86c632e552e07ed4.bindPopup(popup_51b72626a42d5bd37798e01b5cf150ed)
+        ;
+
+        
+    
+    
+            poly_line_2faf82f03f4c04cb86c632e552e07ed4.bindTooltip(
+                `<div>
+                     Rank #11 - Route 81 (Cumberland) - Score: 74.65
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_7e192113fd650c92ce67b717653b5b4b = L.polyline(
+                [[40.2739583381384, -77.0061113594132], [40.2742844373426, -77.0032912423092], [40.274509752706, -77.0011036433697], [40.2753721278893, -76.9934748670077], [40.2756213334699, -76.9913032446055], [40.2758394247804, -76.9893249818734], [40.2759562000094, -76.9887124718851], [40.27613291584, -76.9880302804786], [40.2763253765939, -76.9874464905282], [40.2765563646881, -76.9868305283143], [40.2770398063971, -76.9858710036234], [40.2774283517842, -76.9852554142103], [40.2780648599548, -76.9844595715473], [40.2786500149429, -76.9838910385837], [40.2792962185785, -76.9834203914435], [40.2800487029144, -76.9830372617714], [40.2809076000931, -76.9827613675881], [40.2817522471644, -76.9826137941499], [40.2822578786326, -76.9825784993424], [40.2847834464852, -76.9823947049335], [40.2863644007296, -76.9822675672697]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_c6801e61ae73b135dff5bcdb8480f56b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5e3eb0e2117f81354f70a088a6a4fe55 = $(`<div id="html_5e3eb0e2117f81354f70a088a6a4fe55" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #12<br/>             <b>Viability Score:</b> 73.98 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 8,429 trucks<br/>             <b>Truck Share:</b> 33%<br/>             <b>Total AADT:</b> 25,878<br/>             <b>Segment Length:</b> 1.8 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_c6801e61ae73b135dff5bcdb8480f56b.setContent(html_5e3eb0e2117f81354f70a088a6a4fe55);
+            
+        
+
+        poly_line_7e192113fd650c92ce67b717653b5b4b.bindPopup(popup_c6801e61ae73b135dff5bcdb8480f56b)
+        ;
+
+        
+    
+    
+            poly_line_7e192113fd650c92ce67b717653b5b4b.bindTooltip(
+                `<div>
+                     Rank #12 - Route 81 (Cumberland) - Score: 73.98
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_97eeed345e09c853817b8e2ff3f3a5b0 = L.polyline(
+                [[40.2671811817865, -77.0480895562833], [40.2674442005141, -77.0475078108986], [40.2681766682615, -77.0458850411688], [40.2689973492609, -77.0440678140277], [40.2690650362145, -77.0439183819751], [40.269271719842, -77.0434620530822], [40.2707573943482, -77.0401696359377], [40.2709171694293, -77.0397989964414], [40.2710693799495, -77.03942072396], [40.2711697759766, -77.0391345782027], [40.2713022002716, -77.0387439098688], [40.2714177297276, -77.0383466479007], [40.271623105268, -77.0374987703248], [40.2716502719472, -77.037372695368], [40.2716991494611, -77.0370996838784], [40.2717538432694, -77.0367764565644], [40.2718190963424, -77.0362883012593], [40.2718597386309, -77.0358116659493], [40.2718865906157, -77.0353612120383], [40.2719010964541, -77.0349514194703], [40.2719020039257, -77.0344690358408], [40.2719088462882, -77.0338985768893], [40.2719115412865, -77.0330776649417], [40.2719199833747, -77.0323480900988], [40.2719249765228, -77.0314814548015], [40.2719317242977, -77.0304810909011], [40.2719547345818, -77.0287629137999], [40.2719858915303, -77.0279383133697], [40.2720126166659, -77.0273335486558], [40.2720499908512, -77.0267850076989], [40.2720868537077, -77.026253154745], [40.2721292593674, -77.0257787885795], [40.2721812393347, -77.0251773790732], [40.2722214934702, -77.0247741217489], [40.272269524105, -77.0243707808812], [40.2723211982774, -77.0239284719949], [40.2724292867035, -77.0230916760364], [40.2725747303465, -77.022099970997], [40.2725794492885, -77.0220692180716], [40.2729813915905, -77.0194493965298], [40.2733448251107, -77.0170886877435], [40.2735288238131, -77.0158767445426], [40.2738636513675, -77.0137469836327], [40.2744179672185, -77.0101404948037], [40.2747932828555, -77.0076904413758], [40.2749217509483, -77.00687881172], [40.2749952137551, -77.0064037682247], [40.2750110362078, -77.006298393147], [40.2751115004032, -77.0056136271688], [40.2751685518604, -77.0051858404474], [40.2752220030325, -77.0047454629389], [40.2752756878725, -77.0042051801944], [40.275305225825, -77.0038141839754]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_20586f94cc938f81ad4a69489541c73e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ef5f7f815594e4a79482b1a9632788bc = $(`<div id="html_ef5f7f815594e4a79482b1a9632788bc" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #13<br/>             <b>Viability Score:</b> 72.68 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 9,254 trucks<br/>             <b>Truck Share:</b> 26%<br/>             <b>Total AADT:</b> 35,199<br/>             <b>Segment Length:</b> 2.45 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_20586f94cc938f81ad4a69489541c73e.setContent(html_ef5f7f815594e4a79482b1a9632788bc);
+            
+        
+
+        poly_line_97eeed345e09c853817b8e2ff3f3a5b0.bindPopup(popup_20586f94cc938f81ad4a69489541c73e)
+        ;
+
+        
+    
+    
+            poly_line_97eeed345e09c853817b8e2ff3f3a5b0.bindTooltip(
+                `<div>
+                     Rank #13 - Route 81 (Cumberland) - Score: 72.68
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_4ac22f6e3e53f488a8520857f6b5163a = L.polyline(
+                [[40.187322189199, -77.20827544083], [40.187336669926, -77.2079722486418], [40.1873406872789, -77.2078285038233], [40.1874143913202, -77.2060000989451], [40.1874852775131, -77.2042384164347], [40.1875097603877, -77.2036724930771], [40.187558210046, -77.2023022882826], [40.1876177632756, -77.2008310275103], [40.1877375825955, -77.1979394054079], [40.1877837187314, -77.1967680516848], [40.1878426452143, -77.1952942486802], [40.1878626282026, -77.1947943272414]],
+                {"bubblingMouseEvents": true, "color": "#0056b3", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0056b3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_99b4376d2fd84b188ffc68bfd76fb1c3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_48efc4508f35bf1506b0d52a2a3c1d4b = $(`<div id="html_48efc4508f35bf1506b0d52a2a3c1d4b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Cumberland)</h4>             <b>County Priority Rank:</b> #14<br/>             <b>Viability Score:</b> 71.38 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 8,206 trucks<br/>             <b>Truck Share:</b> 29%<br/>             <b>Total AADT:</b> 28,273<br/>             <b>Segment Length:</b> 0.72 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 2<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_99b4376d2fd84b188ffc68bfd76fb1c3.setContent(html_48efc4508f35bf1506b0d52a2a3c1d4b);
+            
+        
+
+        poly_line_4ac22f6e3e53f488a8520857f6b5163a.bindPopup(popup_99b4376d2fd84b188ffc68bfd76fb1c3)
+        ;
+
+        
+    
+    
+            poly_line_4ac22f6e3e53f488a8520857f6b5163a.bindTooltip(
+                `<div>
+                     Rank #14 - Route 81 (Cumberland) - Score: 71.38
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_921bf6c3cd78beebc0c0562c37f8e9c1 = L.polyline(
+                [[40.3650268752299, -76.7028176759854], [40.3651164082742, -76.7026218234905], [40.3656229954144, -76.7012640576678], [40.3659224823141, -76.7002777874359], [40.3661692738402, -76.699271014056], [40.3663804597466, -76.6983097160907], [40.3667853072563, -76.6964667665898], [40.3671227957041, -76.6950305473], [40.367326566894, -76.6941396961176]],
+                {"bubblingMouseEvents": true, "color": "#d9534f", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#d9534f", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_ff9937f1a059d6b9ae2cedf1704c7c0d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7749619d7114b69fb24a3bc133be1dc6 = $(`<div id="html_7749619d7114b69fb24a3bc133be1dc6" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Dauphin)</h4>             <b>County Priority Rank:</b> #1<br/>             <b>Viability Score:</b> 88.0 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 12,188 trucks<br/>             <b>Truck Share:</b> 41%<br/>             <b>Total AADT:</b> 29,947<br/>             <b>Segment Length:</b> 0.5 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_ff9937f1a059d6b9ae2cedf1704c7c0d.setContent(html_7749619d7114b69fb24a3bc133be1dc6);
+            
+        
+
+        poly_line_921bf6c3cd78beebc0c0562c37f8e9c1.bindPopup(popup_ff9937f1a059d6b9ae2cedf1704c7c0d)
+        ;
+
+        
+    
+    
+            poly_line_921bf6c3cd78beebc0c0562c37f8e9c1.bindTooltip(
+                `<div>
+                     Rank #1 - Route 81 (Dauphin) - Score: 88.0
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_4f25d57e53ffcc70cf2d0e9ca565bb6b = L.polyline(
+                [[40.379218541088, -76.6645440217526], [40.3794235108849, -76.6638190570638], [40.380173236664, -76.6612097143698], [40.3805882001052, -76.6598927877565], [40.3807693097816, -76.6593782749826], [40.3810156828943, -76.6587468204233], [40.3813416888413, -76.6580039585991], [40.3822603768592, -76.6560121977815], [40.3826232080586, -76.6552479767147], [40.3833575739912, -76.6535824130414], [40.384583974155, -76.6509411666801], [40.3849345754747, -76.6501953538902], [40.3857614612509, -76.6483142816852], [40.387044308643, -76.645623131215], [40.387781924344, -76.6439961942005]],
+                {"bubblingMouseEvents": true, "color": "#d9534f", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#d9534f", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_d2b6eba8fee52d6c50cdafad8e55a324 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7fdd814cc34309b1157ff34c9f17eed4 = $(`<div id="html_7fdd814cc34309b1157ff34c9f17eed4" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Dauphin)</h4>             <b>County Priority Rank:</b> #2<br/>             <b>Viability Score:</b> 87.28 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 12,855 trucks<br/>             <b>Truck Share:</b> 46%<br/>             <b>Total AADT:</b> 27,711<br/>             <b>Segment Length:</b> 1.23 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 2<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_d2b6eba8fee52d6c50cdafad8e55a324.setContent(html_7fdd814cc34309b1157ff34c9f17eed4);
+            
+        
+
+        poly_line_4f25d57e53ffcc70cf2d0e9ca565bb6b.bindPopup(popup_d2b6eba8fee52d6c50cdafad8e55a324)
+        ;
+
+        
+    
+    
+            poly_line_4f25d57e53ffcc70cf2d0e9ca565bb6b.bindTooltip(
+                `<div>
+                     Rank #2 - Route 81 (Dauphin) - Score: 87.28
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_99f49b0f3ab41ab2ca78b6b35032b5fb = L.polyline(
+                [[40.367326566894, -76.6941396961176], [40.3677768541262, -76.692171108241], [40.3681628284472, -76.6906858094958], [40.3684694501101, -76.6897115883668], [40.3687563187365, -76.6888919178908], [40.369473039066, -76.6871443353371], [40.3699953094859, -76.685927870017], [40.3709269942427, -76.6839977524925], [40.3717255724897, -76.6824142121911], [40.372486778872, -76.6809304926841], [40.3729063058568, -76.6800504653026], [40.3737280100979, -76.6783153819077], [40.374629087985, -76.6764221402256], [40.3752936023235, -76.6751336578675], [40.3757858662237, -76.6741200366301], [40.3761600321772, -76.6734129313475], [40.3768317908634, -76.6720357161006], [40.3774828842936, -76.670433754946], [40.377800341615, -76.6695100047629], [40.3780522946181, -76.6687181308568], [40.3783045128803, -76.6677693329487], [40.3785143290736, -76.667042339864], [40.3788547205064, -76.6658308233628], [40.379218541088, -76.6645440217526]],
+                {"bubblingMouseEvents": true, "color": "#d9534f", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#d9534f", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_30031ec66b23bd85319d0b4862f6ebbe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_16aef39e55510ab522d552e58ffc6564 = $(`<div id="html_16aef39e55510ab522d552e58ffc6564" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Dauphin)</h4>             <b>County Priority Rank:</b> #3<br/>             <b>Viability Score:</b> 83.0 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 12,188 trucks<br/>             <b>Truck Share:</b> 41%<br/>             <b>Total AADT:</b> 29,947<br/>             <b>Segment Length:</b> 1.78 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 2<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_30031ec66b23bd85319d0b4862f6ebbe.setContent(html_16aef39e55510ab522d552e58ffc6564);
+            
+        
+
+        poly_line_99f49b0f3ab41ab2ca78b6b35032b5fb.bindPopup(popup_30031ec66b23bd85319d0b4862f6ebbe)
+        ;
+
+        
+    
+    
+            poly_line_99f49b0f3ab41ab2ca78b6b35032b5fb.bindTooltip(
+                `<div>
+                     Rank #3 - Route 81 (Dauphin) - Score: 83.0
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ac71855cf56b75b8361844bacb74c988 = L.polyline(
+                [[40.3791724601442, -76.6635868650207], [40.3791995247217, -76.6634916858214], [40.3796354627416, -76.661953240049], [40.3799679092036, -76.6608147305292], [40.3804938544066, -76.6591796826261], [40.3809904728006, -76.657936377442], [40.3818420741384, -76.6560557022923], [40.3829856370032, -76.6535426293524], [40.3842844264926, -76.6507673687238], [40.3846728229615, -76.6499430925854], [40.3854967169937, -76.6481170763276], [40.386736501559, -76.6455299399874], [40.3874783142689, -76.6438883253995]],
+                {"bubblingMouseEvents": true, "color": "#d9534f", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#d9534f", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_0a2fae4811bb9244e2da432ed8f0dc18 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a43cb4615e43a5ae10db0323eea660c6 = $(`<div id="html_a43cb4615e43a5ae10db0323eea660c6" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Dauphin)</h4>             <b>County Priority Rank:</b> #4<br/>             <b>Viability Score:</b> 81.79 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 11,548 trucks<br/>             <b>Truck Share:</b> 42%<br/>             <b>Total AADT:</b> 27,334<br/>             <b>Segment Length:</b> 1.18 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 2<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_0a2fae4811bb9244e2da432ed8f0dc18.setContent(html_a43cb4615e43a5ae10db0323eea660c6);
+            
+        
+
+        poly_line_ac71855cf56b75b8361844bacb74c988.bindPopup(popup_0a2fae4811bb9244e2da432ed8f0dc18)
+        ;
+
+        
+    
+    
+            poly_line_ac71855cf56b75b8361844bacb74c988.bindTooltip(
+                `<div>
+                     Rank #4 - Route 81 (Dauphin) - Score: 81.79
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_82b13868d0aa1ff47e9c71da5572922a = L.polyline(
+                [[40.387781924344, -76.6439961942005], [40.3885013960783, -76.6424626397548], [40.3888105265794, -76.6417880615703], [40.3901085250254, -76.6389554363243], [40.3902780173852, -76.6385893476931], [40.3908776300538, -76.6372739868434], [40.3913147910917, -76.6362733049394], [40.3915045713768, -76.6358161397149], [40.3916337301771, -76.6354880911428], [40.3918368627925, -76.6349902430157], [40.3920685074057, -76.6344199933717], [40.392438331441, -76.6333889178684], [40.392879529236, -76.632098158281], [40.3934910047866, -76.6302920675545], [40.3940424717484, -76.6286802500846], [40.3948750719571, -76.6261751613709], [40.3953346717619, -76.6247812814772], [40.3961515358115, -76.6223736977011], [40.3972686754747, -76.6190461339711], [40.3978931382372, -76.6171833882963], [40.398227033173, -76.6161842002906], [40.3984554322434, -76.615467766902], [40.3988184765259, -76.6144635761785], [40.3989864569674, -76.6140357957453], [40.3991608101592, -76.6136260732459], [40.3994634939609, -76.612951083633], [40.399744744108, -76.6123686169011], [40.4000045396619, -76.6118764263636], [40.4003254344712, -76.6113067696077], [40.4006296543031, -76.6107890938656], [40.4008241853577, -76.6104755854248], [40.4010592420818, -76.6100894553797], [40.4016986162441, -76.6090558008132], [40.4022126782767, -76.6082134595544], [40.402777419392, -76.6072880492847], [40.403119282776, -76.6067454857177], [40.4034202009896, -76.6062435592392], [40.4040171642372, -76.6052690021403], [40.4044434592413, -76.6045873335532], [40.404834003662, -76.6039399851016], [40.4052957025467, -76.6031902529621], [40.4060111469548, -76.6020360193317], [40.4065589625956, -76.6011341655836], [40.4069968795961, -76.6004140266445], [40.4073828734219, -76.5997901754258], [40.4076547282504, -76.5993461660286], [40.4079328503486, -76.598895413877], [40.4081411699545, -76.5985619116328], [40.4083456208014, -76.5982218409073], [40.408701059559, -76.5976454054641], [40.4090078387247, -76.5971460652354], [40.4096375319268, -76.5961139351099], [40.4099929925895, -76.5955407928906], [40.4103720779719, -76.5949224717008], [40.4106127497749, -76.5945303579776], [40.4111614007305, -76.59363387346], [40.4117799898586, -76.5926350295091], [40.4123023659223, -76.5917737859001], [40.4124170775709, -76.5915861044811], [40.4125191348172, -76.5914002987443], [40.4126309795648, -76.5911795018306], [40.4127454745181, -76.5909702662347], [40.4128336760657, -76.5907929873066], [40.4129555493411, -76.59053359787], [40.4130955160985, -76.5902308521445], [40.413187109666, -76.5900074096923], [40.4132647440341, -76.589800629192], [40.4133523614783, -76.5895653199949], [40.4134430005652, -76.5892993503989], [40.4135336012281, -76.5890356023365], [40.4135990387641, -76.5888345890203], [40.4136951198072, -76.5885240180704], [40.4137359126753, -76.5883549371676], [40.4137617842133, -76.5882476998823], [40.413813657212, -76.5880573863994], [40.4138423965679, -76.5879318980425], [40.4138823125095, -76.5877401050343], [40.4139232140138, -76.5875679213506], [40.4139799655708, -76.5872548836269], [40.4140271286602, -76.5869886795705], [40.4140894660173, -76.5865929959424], [40.4141236447732, -76.5863021304366], [40.4141535966536, -76.5860619559639], [40.4141846066027, -76.5857701112944], [40.4142023334067, -76.585570433773], [40.4142168093585, -76.5853418502625], [40.4142227974019, -76.5851350616773], [40.4142317572374, -76.5848799455265], [40.4142385933859, -76.5846429699546], [40.4142355648252, -76.5842281432277], [40.4142305302188, -76.5837288667793], [40.4142273915406, -76.5833034821529], [40.414218870121, -76.5825734428811], [40.4142033367719, -76.5813877098252], [40.4141992179818, -76.5811737014801], [40.4141920719967, -76.5805332053775], [40.4141908600244, -76.5804103230331], [40.4141875838689, -76.57989129353], [40.4141830676987, -76.5791765534657], [40.4141625893283, -76.5777325924949], [40.4141390098871, -76.5760716102295], [40.4141146001125, -76.5743538670146], [40.4140947215527, -76.572541875255], [40.4140600858977, -76.5701246148266], [40.414056576506, -76.5691456299317], [40.4140749168546, -76.5686057756836], [40.4141053338482, -76.5679141052541], [40.414131531492, -76.5674766535585], [40.4141900543227, -76.5667427308697], [40.4143019728962, -76.5657822216252], [40.4144509219657, -76.5648628597123], [40.4145806304174, -76.5641549189965], [40.4147646450699, -76.5633172094513], [40.414887941568, -76.5628193963585], [40.415081713954, -76.5620991190789], [40.4154298481706, -76.5609896808384], [40.4156142927525, -76.5604039720866], [40.4159935256608, -76.5591987572671], [40.4165491690521, -76.557444922439], [40.4174288663616, -76.554653371761], [40.4180697989234, -76.5526036022339], [40.4186977009708, -76.5506209647063], [40.4193565582179, -76.548531322557], [40.4195573605652, -76.5479201627366], [40.4200813114502, -76.5461968212208], [40.4202957922756, -76.5454200596728], [40.4205120861016, -76.5446124544694], [40.4207457042362, -76.5436197010961], [40.4208601395608, -76.5430526674208], [40.4212049461804, -76.5415885338819], [40.4215819256436, -76.5398800226531], [40.4219432038819, -76.5382072086771], [40.4226715243582, -76.5350098521544], [40.4231124364752, -76.5329798689197], [40.423369505537, -76.5317849667597], [40.4237714494894, -76.5299208825951], [40.4240976861088, -76.5283886253167], [40.4242367926491, -76.527781162962], [40.4243459625137, -76.5273786907652], [40.4244366538084, -76.5270682132401], [40.4245327549354, -76.5267564933449], [40.4246418149034, -76.5264334331176], [40.4247505279828, -76.5260991933566], [40.424849002301, -76.5258289423899], [40.424928901795, -76.5256498183223], [40.4250351908565, -76.5253957163694]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_0b6ab4b71616cbdfb762f38838563b12 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6f9edb172ff4556271456cb335cbe552 = $(`<div id="html_6f9edb172ff4556271456cb335cbe552" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Lebanon)</h4>             <b>County Priority Rank:</b> #1<br/>             <b>Viability Score:</b> 90.63 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 12,238 trucks<br/>             <b>Truck Share:</b> 46%<br/>             <b>Total AADT:</b> 26,383<br/>             <b>Segment Length:</b> 6.89 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 1<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_0b6ab4b71616cbdfb762f38838563b12.setContent(html_6f9edb172ff4556271456cb335cbe552);
+            
+        
+
+        poly_line_82b13868d0aa1ff47e9c71da5572922a.bindPopup(popup_0b6ab4b71616cbdfb762f38838563b12)
+        ;
+
+        
+    
+    
+            poly_line_82b13868d0aa1ff47e9c71da5572922a.bindTooltip(
+                `<div>
+                     Rank #1 - Route 81 (Lebanon) - Score: 90.63
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_49d9d422c3a37e22b345047ef95dd1a0 = L.polyline(
+                [[40.3874783142689, -76.6438883253995], [40.3878190880495, -76.6431436651481], [40.3881692729445, -76.6424088746867], [40.388542654431, -76.6415736121524], [40.3887118667819, -76.6411950719732], [40.3891220346669, -76.6402996744171], [40.3894786833464, -76.6395305997529], [40.3898506706909, -76.6387219713684], [40.3900632349428, -76.6382448689345], [40.3902087222291, -76.637925631937], [40.3904460937115, -76.6374193243749], [40.3906663539774, -76.6369430546793], [40.3909965709509, -76.6362111415218], [40.3911904004912, -76.6357703112624], [40.3913289373975, -76.6354249189171], [40.3915875605715, -76.6347641945509], [40.3918408105367, -76.6341018038098], [40.3920075816471, -76.633631648048], [40.3922304031668, -76.6330065131368], [40.3924725485592, -76.6323040287879], [40.3927900672879, -76.6313692140555], [40.3930918088905, -76.6304644120367], [40.3932559565317, -76.6300012846937], [40.3938371708285, -76.6282445357308], [40.3942375431661, -76.6270247044233], [40.3945642069061, -76.6260916153546], [40.3949166883221, -76.625021182862], [40.3950429110398, -76.6246514443759], [40.3953680370116, -76.6236796666645], [40.3958468223168, -76.6222711496215], [40.3962617302488, -76.6210387472899], [40.3966844997585, -76.6197904420829], [40.3970551693417, -76.6186900525723], [40.3974075049971, -76.6176319746098], [40.3978311984046, -76.6163450948462], [40.3981394760797, -76.615436545056], [40.3983786824597, -76.614718227002], [40.3986092222976, -76.6141059874066], [40.3988011280892, -76.613580144182], [40.3989695477739, -76.6131501269438], [40.399151691656, -76.6127548924732], [40.3993284990005, -76.6123614959558], [40.399530299024, -76.6119239077163], [40.3997286170361, -76.6115406495852], [40.3999848450622, -76.6110583692619], [40.4002769592557, -76.6105509684501], [40.4004414307451, -76.6102645666729], [40.4005717476799, -76.610043518231], [40.4007246059522, -76.6098010800038], [40.4008840845252, -76.6095515253229], [40.4013160643047, -76.6088421562858], [40.4018418428091, -76.6079802973308], [40.4021524792964, -76.6074816344318], [40.4033052564721, -76.6055891796739], [40.4036710751601, -76.6050029741537], [40.4044362438146, -76.6037503696098], [40.4055557920232, -76.6019314194999], [40.4060536025937, -76.6011175269879], [40.4066579847754, -76.6001197080147], [40.4071848563589, -76.5992755395827], [40.4077929371514, -76.5982966139765], [40.4081617315555, -76.5976868133072], [40.4085072332305, -76.5971320407372], [40.4092161850996, -76.5959746037144], [40.4095937160126, -76.5953601309072], [40.4098685072202, -76.5949194470732], [40.4107512651858, -76.5934926789586], [40.4116195268569, -76.5920590504102], [40.4118501075305, -76.5917015838092], [40.4122626179857, -76.5909851216745], [40.4125134838215, -76.5904953206557], [40.412665173425, -76.5901745502341], [40.4128288547534, -76.5897922964194], [40.4130098100141, -76.5893366825854], [40.4131186759489, -76.5890567091524], [40.4132354818808, -76.5886705422764], [40.4133366453102, -76.5883412064185], [40.4134510795579, -76.5878985139516], [40.4135361250551, -76.5875782331117], [40.4136429512451, -76.5870962501309], [40.4137130683439, -76.5867250213397], [40.4137810035327, -76.5863161207988], [40.4138226116303, -76.5859760204288], [40.413868837804, -76.5855580648699], [40.4139114341697, -76.5849586954376], [40.4139295782613, -76.5846142849509], [40.4139367256423, -76.5842512092693], [40.4139280605542, -76.583549777746], [40.4139219780981, -76.5830603423415], [40.4139167868414, -76.5823193840474], [40.4139131727963, -76.5815568949325], [40.4139125770671, -76.5813482522247], [40.4139052798963, -76.5808563662161], [40.4138998807144, -76.5804904590447], [40.4138593560582, -76.5777464768559], [40.413838883061, -76.576361896322], [40.4138158800856, -76.5744233948209], [40.413792687645, -76.5722838144267], [40.413766974114, -76.5701812994193], [40.4137719054769, -76.5685682862918], [40.4137875504113, -76.5676605575618], [40.4138287987414, -76.5670159462769], [40.4138988944437, -76.5663370642638], [40.4139717573733, -76.5657197366107], [40.4140487821129, -76.5650911342024], [40.4142284243155, -76.5640350918224], [40.4144302884191, -76.5630598609871], [40.4145865534529, -76.5624382582514], [40.4148010011831, -76.5616476132407], [40.4151447076077, -76.5605242538082], [40.4155571397312, -76.5592176524308], [40.4159716963776, -76.5579109971545], [40.4161752739853, -76.5572497553587], [40.4164462958291, -76.5564100407738], [40.4167942301168, -76.555286551984], [40.4169783994388, -76.5546719327514], [40.4172188609025, -76.5539236612726], [40.4174284819962, -76.5532926639558], [40.4177309359255, -76.5523267711078], [40.4180147920722, -76.5514256081642], [40.4188808009189, -76.5486742076878], [40.4193215101411, -76.5472893046587], [40.419699307846, -76.5460944123801], [40.4200137218361, -76.5450498253166], [40.4202798185331, -76.5440929075366], [40.4204116775371, -76.5436032646213], [40.4205880351144, -76.5428663792887], [40.4209661614961, -76.5411715970125], [40.421242270615, -76.5399552511683], [40.4215746799119, -76.5383706535498], [40.4220473940544, -76.5363065478091], [40.4223425241243, -76.5349941999089], [40.4227468793852, -76.5331611678087], [40.4231042861527, -76.5314662346154], [40.4234799098139, -76.5298253404764], [40.4237790177664, -76.5284635313366], [40.4243439595052, -76.5259115317005]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_951ac00f9d348594e3cbd9733f3f8015 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_94cb67df64dcbdb2a80f1bbda24fc334 = $(`<div id="html_94cb67df64dcbdb2a80f1bbda24fc334" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 81 (Lebanon)</h4>             <b>County Priority Rank:</b> #2<br/>             <b>Viability Score:</b> 85.32 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 10,994 trucks<br/>             <b>Truck Share:</b> 42%<br/>             <b>Total AADT:</b> 26,023<br/>             <b>Segment Length:</b> 6.87 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 1<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_951ac00f9d348594e3cbd9733f3f8015.setContent(html_94cb67df64dcbdb2a80f1bbda24fc334);
+            
+        
+
+        poly_line_49d9d422c3a37e22b345047ef95dd1a0.bindPopup(popup_951ac00f9d348594e3cbd9733f3f8015)
+        ;
+
+        
+    
+    
+            poly_line_49d9d422c3a37e22b345047ef95dd1a0.bindTooltip(
+                `<div>
+                     Rank #2 - Route 81 (Lebanon) - Score: 85.32
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e72e3aa66d4f4ce8f08138553b47a2b6 = L.polyline(
+                [[40.4561490496992, -76.3793575977601], [40.4562554637108, -76.3788618534874], [40.4565685495798, -76.3774944487417], [40.4566956088042, -76.3769909169738]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_7da9a006cf08d61b699992f5868ad380 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8322191e6811fbb442eea6123846750b = $(`<div id="html_8322191e6811fbb442eea6123846750b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 78 (Lebanon)</h4>             <b>County Priority Rank:</b> #3<br/>             <b>Viability Score:</b> 73.28 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 7,041 trucks<br/>             <b>Truck Share:</b> 39%<br/>             <b>Total AADT:</b> 18,166<br/>             <b>Segment Length:</b> 0.14 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_7da9a006cf08d61b699992f5868ad380.setContent(html_8322191e6811fbb442eea6123846750b);
+            
+        
+
+        poly_line_e72e3aa66d4f4ce8f08138553b47a2b6.bindPopup(popup_7da9a006cf08d61b699992f5868ad380)
+        ;
+
+        
+    
+    
+            poly_line_e72e3aa66d4f4ce8f08138553b47a2b6.bindTooltip(
+                `<div>
+                     Rank #3 - Route 78 (Lebanon) - Score: 73.28
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_54937aba08b3793a1d404f87d535c68a = L.polyline(
+                [[40.4250351908565, -76.5253957163694], [40.4253868637475, -76.524541526332], [40.4257647839888, -76.523718410817], [40.425963663404, -76.5232753823801], [40.4261924278908, -76.5227341474214], [40.4263475564274, -76.5223779860725], [40.4264733981217, -76.5220243741424], [40.4266021944149, -76.5216585927351], [40.4267170430674, -76.5212870064145], [40.4268030736056, -76.5209660949573], [40.4268667647306, -76.5207128733534], [40.4269388272144, -76.5203804257314], [40.4270204871316, -76.5199763976526], [40.4270898346609, -76.5196210968898], [40.4271651655912, -76.519114405747], [40.4273100735043, -76.5181196509272], [40.4274431926893, -76.5170356368059], [40.4278388738225, -76.5141211678509], [40.4281068077503, -76.5120738767757], [40.4286839034206, -76.5077202905659], [40.4287462196755, -76.5073264457891], [40.4288138388088, -76.506923428315], [40.4288863197482, -76.5065204377904], [40.4291194595391, -76.5054236074049], [40.429298800288, -76.5046920598617], [40.4294847741203, -76.5040415897644], [40.4295688974163, -76.5037788037977], [40.4296136227697, -76.5036439846399], [40.4297178051639, -76.5033252318344], [40.4299322101331, -76.5027217957288], [40.4301804007246, -76.5020567226183], [40.4303765996076, -76.5015577426139], [40.4305381796357, -76.5011691745412], [40.4307920112977, -76.5006242681679], [40.4311507510916, -76.4999511883733], [40.4314049660946, -76.4994893060952], [40.4318266300524, -76.498723171617], [40.4333871868188, -76.4959057305942], [40.4349096267947, -76.4931568543837], [40.4352553699139, -76.4925217113419], [40.4357482860444, -76.4916291506655], [40.4361738603898, -76.4908810840025], [40.4369588191099, -76.4894498270064], [40.4375928583, -76.4883052143326], [40.4380519886344, -76.4874768921822], [40.4382347589947, -76.4871392091787], [40.4387114453036, -76.4862658014824], [40.4391433559184, -76.4853961325744], [40.4395539535349, -76.4844699174142], [40.4398720746979, -76.4837242573379], [40.4401889650757, -76.482864817546], [40.4406982022684, -76.4815331801217], [40.4409899202681, -76.4807819981013], [40.4416157412299, -76.4790996871361], [40.4424152799498, -76.4769886947275], [40.4432701570597, -76.4746885494593], [40.4437524020274, -76.473417745946], [40.4444046463307, -76.4716957824459], [40.4453213389439, -76.4692467108767], [40.4469335776184, -76.4649337860099], [40.4472524472884, -76.463967471852], [40.4474575503985, -76.4632806361555], [40.4475185045774, -76.4630765128718], [40.4477820772374, -76.4620611489027], [40.4480488003198, -76.4609399867495], [40.4481001492077, -76.4606817264952], [40.4482409998931, -76.4599550002101], [40.4483155189256, -76.4595577463269], [40.448448578069, -76.4587700873161], [40.4485070956526, -76.458323585094], [40.4486581688258, -76.4573029084884], [40.4488003575248, -76.4562956913407], [40.4489033945478, -76.4556053845538], [40.4495391797853, -76.4513195349097], [40.4502451316774, -76.4463591519969], [40.4504199194316, -76.4450467142651], [40.4507249552425, -76.4429372453992], [40.4509529580591, -76.4413582209287], [40.451326120453, -76.4387717277823], [40.451521762721, -76.4373819307315], [40.4517079430477, -76.4361255784162], [40.4519282803537, -76.4345692085589], [40.4521216418411, -76.4332408607651], [40.4523761077155, -76.4314835521518], [40.4525136252501, -76.4305310873206], [40.4526378867863, -76.4296559710287], [40.4527216577876, -76.4289481632636], [40.452787150164, -76.4282900520965], [40.4528455395611, -76.4276289944553], [40.4528898666351, -76.4269743795314], [40.4529372594614, -76.4260255052665], [40.4529474260973, -76.4256121661497], [40.4529494945595, -76.4251592966689], [40.4529432187658, -76.4244354387045], [40.4529235095845, -76.4235384655035], [40.4528768290222, -76.4225495129021], [40.4528291606769, -76.4218409245009], [40.452765265833, -76.4212442176752], [40.4526854069336, -76.4204440280645], [40.4525917104979, -76.4194652596635], [40.4524897236214, -76.4185853346899], [40.45245210824, -76.4182085237675]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_8e53814b6f4ecfabfab8c29eaf09c089 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e091128a101ecdbccfaad76e3806d6b7 = $(`<div id="html_e091128a101ecdbccfaad76e3806d6b7" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 78 (Lebanon)</h4>             <b>County Priority Rank:</b> #4<br/>             <b>Viability Score:</b> 72.35 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 6,132 trucks<br/>             <b>Truck Share:</b> 42%<br/>             <b>Total AADT:</b> 14,705<br/>             <b>Segment Length:</b> 6.12 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 1<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_8e53814b6f4ecfabfab8c29eaf09c089.setContent(html_e091128a101ecdbccfaad76e3806d6b7);
+            
+        
+
+        poly_line_54937aba08b3793a1d404f87d535c68a.bindPopup(popup_8e53814b6f4ecfabfab8c29eaf09c089)
+        ;
+
+        
+    
+    
+            poly_line_54937aba08b3793a1d404f87d535c68a.bindTooltip(
+                `<div>
+                     Rank #4 - Route 78 (Lebanon) - Score: 72.35
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_001bad6f820202cf6d91219c239625c5 = L.polyline(
+                [[40.4519756150709, -76.4172979365983], [40.4519465474872, -76.4169961682399], [40.4518309811082, -76.4157811815467], [40.4517824555016, -76.4152051584304], [40.4517412181417, -76.4148454604142], [40.4515482144378, -76.412792359934], [40.4514641746946, -76.4118677824026], [40.4513113400917, -76.4102650325272], [40.4511471276119, -76.4084616088987], [40.4510427918041, -76.4073468795812], [40.4510102963323, -76.4068807141359], [40.450970268441, -76.4058636828937], [40.4509691357435, -76.405184169365], [40.4509697933506, -76.4047557520262], [40.4509943490254, -76.4041510654658], [40.4510402345217, -76.4033435680602], [40.4510907799658, -76.4027427927645], [40.4511515455989, -76.4021423435573], [40.451225269134, -76.4015238705522], [40.4513275867314, -76.4008679306131], [40.4515483497862, -76.3997310605188], [40.4520992022331, -76.3971030535282], [40.4524507397365, -76.3954282408007], [40.4527973045185, -76.39377672588], [40.4534322654577, -76.390825114283], [40.4540747422005, -76.3877363506034], [40.4545641723295, -76.3853908988039], [40.454979179611, -76.3834257927974]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_dbc6e1f9459b1b60ae81ed04caa28b82 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_14b22f06936be26eea810a6b954bd08e = $(`<div id="html_14b22f06936be26eea810a6b954bd08e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 78 (Lebanon)</h4>             <b>County Priority Rank:</b> #5<br/>             <b>Viability Score:</b> 71.62 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 6,045 trucks<br/>             <b>Truck Share:</b> 41%<br/>             <b>Total AADT:</b> 14,685<br/>             <b>Segment Length:</b> 1.83 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 1<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_dbc6e1f9459b1b60ae81ed04caa28b82.setContent(html_14b22f06936be26eea810a6b954bd08e);
+            
+        
+
+        poly_line_001bad6f820202cf6d91219c239625c5.bindPopup(popup_dbc6e1f9459b1b60ae81ed04caa28b82)
+        ;
+
+        
+    
+    
+            poly_line_001bad6f820202cf6d91219c239625c5.bindTooltip(
+                `<div>
+                     Rank #5 - Route 78 (Lebanon) - Score: 71.62
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_65e052dce514c07c724d4ae60dd4eb96 = L.polyline(
+                [[40.4243439595052, -76.5259115317005], [40.4245276000577, -76.5248410947164], [40.4246924786724, -76.524112042693], [40.4248289326996, -76.5234932184466], [40.4249583291409, -76.5229067901443], [40.4251608250656, -76.5220060152729], [40.4253080876698, -76.5213019714488], [40.4254044357869, -76.5208860918964], [40.4256260963838, -76.5199217989479], [40.4257599307789, -76.5192941370758], [40.4259129978573, -76.5186256665369], [40.4260257968596, -76.5181344614513], [40.4261594636034, -76.5174920842765], [40.4264342822123, -76.5162430981465], [40.4270390584987, -76.513494275835], [40.427103528962, -76.5132012238297], [40.42734467225, -76.5121050716723], [40.4283466372547, -76.5075127213448], [40.4287479155226, -76.5056904187223], [40.4289810359629, -76.5047055606421], [40.429318964972, -76.5035703937535], [40.4293661966297, -76.5034224457178], [40.4295013262246, -76.5029869397731], [40.4296561366841, -76.502536639474], [40.4298364702445, -76.5020727521562], [40.4300361137286, -76.5015730499064], [40.4302385547057, -76.501093783431], [40.4304271120414, -76.5006776810964], [40.4305558925577, -76.5004091755563], [40.4309118382888, -76.4997049565607], [40.4311561078619, -76.4992608438572], [40.4318881816672, -76.4979298029142], [40.4347158383599, -76.492848315423], [40.4351129946169, -76.4921146361776], [40.435508016625, -76.4914246312247], [40.4358121416835, -76.4908561620416], [40.4362835995722, -76.4900036320909], [40.4367173068961, -76.4892205679627], [40.4372517334413, -76.4882520547291], [40.4375959213626, -76.4876356424592], [40.4379070519051, -76.4870548025763], [40.4382698143095, -76.4864207941066], [40.4385622990293, -76.4858375512303], [40.4388841927898, -76.4851854974032], [40.4392940775206, -76.4842984910102], [40.439717168794, -76.4832592794654], [40.4399087091799, -76.4827581821319], [40.440234287066, -76.4818880227437], [40.4406334323926, -76.4808333224467], [40.4413802771775, -76.478838595392], [40.4420749815094, -76.4769924874146], [40.442791759042, -76.4750720824749], [40.4433832051979, -76.4735086024522], [40.4439578733697, -76.4719810604306], [40.4445137397027, -76.4704871342654], [40.4450848521522, -76.4689740829677], [40.4454642716655, -76.4679486614608], [40.4462050673286, -76.465981580059], [40.4466704001855, -76.4647034337165], [40.4469484443956, -76.46389623545], [40.4471759896929, -76.463121178006], [40.4472091480807, -76.4630082337236], [40.4474408584708, -76.4621713299673], [40.4475725384379, -76.4616448570237], [40.4478245584721, -76.4604973877073], [40.4478286847739, -76.46047543917], [40.4478765063779, -76.4602563786997], [40.4479740000263, -76.4597469997976], [40.4480426642092, -76.4593738872394], [40.448196234292, -76.4583738530206], [40.4484213916195, -76.456814065972], [40.4485929301454, -76.4556068676724], [40.4487399137949, -76.454626146334], [40.4489356203312, -76.453261889285], [40.4490967688405, -76.4521375956047], [40.449321741997, -76.4505689053533], [40.4494200620709, -76.4498801095328], [40.4495301884222, -76.4491470213788], [40.4495927061592, -76.4486772851303], [40.449814513294, -76.4471322672832], [40.4499635963219, -76.4461278789303], [40.4500769127917, -76.4452865779207], [40.4502027804879, -76.4444421238244], [40.4503483742967, -76.4434466072332], [40.4504655209474, -76.4426303817964], [40.4506571742596, -76.4413193121988], [40.4507417434237, -76.4407164348453], [40.4509310184441, -76.4393965357068], [40.4510689894168, -76.4384292118425], [40.4512388450453, -76.4372766580617], [40.4513713809314, -76.4363418801602], [40.4515586847923, -76.4350515391877], [40.4518333633655, -76.4331474907728], [40.4519211602513, -76.4324991406996], [40.4520508395103, -76.4316013814726], [40.452204655406, -76.4305450785812], [40.4523083078909, -76.4297408887726], [40.452426613875, -76.4287046524479], [40.4525095409336, -76.4276169381659], [40.4525371919223, -76.4270610498883], [40.4525620013112, -76.4261727157853], [40.4525720142013, -76.4256137543711], [40.4525713367864, -76.4248208177581], [40.4525426686636, -76.423895124519], [40.4524873858194, -76.4229123406487], [40.4524214843769, -76.4220863604062], [40.4522099906754, -76.4197859716947], [40.4520516468092, -76.4180872745604], [40.4519756150709, -76.4172979365983]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_40f73571bc5224cb776480eb8499d283 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5a6d71ed3a0d45a287622514ef257be3 = $(`<div id="html_5a6d71ed3a0d45a287622514ef257be3" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 78 (Lebanon)</h4>             <b>County Priority Rank:</b> #6<br/>             <b>Viability Score:</b> 71.6 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 6,036 trucks<br/>             <b>Truck Share:</b> 41%<br/>             <b>Total AADT:</b> 14,804<br/>             <b>Segment Length:</b> 6.16 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 1<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_40f73571bc5224cb776480eb8499d283.setContent(html_5a6d71ed3a0d45a287622514ef257be3);
+            
+        
+
+        poly_line_65e052dce514c07c724d4ae60dd4eb96.bindPopup(popup_40f73571bc5224cb776480eb8499d283)
+        ;
+
+        
+    
+    
+            poly_line_65e052dce514c07c724d4ae60dd4eb96.bindTooltip(
+                `<div>
+                     Rank #6 - Route 78 (Lebanon) - Score: 71.6
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ef8085eacb5c4777788ecaa173126f58 = L.polyline(
+                [[40.45245210824, -76.4182085237675], [40.4523858820678, -76.417545097269], [40.4522978308176, -76.4166494841172], [40.452194719021, -76.4156739954654], [40.4521380345691, -76.4150423046492], [40.4520039601056, -76.4137344501219], [40.4518820249666, -76.4126793788207], [40.4517586875936, -76.4114793266192], [40.4517444507699, -76.4113367720685]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_9c8798ee4a79fc656dff912e71d60947 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e1aa408866b1985f31960fac9c89a840 = $(`<div id="html_e1aa408866b1985f31960fac9c89a840" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 78 (Lebanon)</h4>             <b>County Priority Rank:</b> #7<br/>             <b>Viability Score:</b> 71.55 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 5,831 trucks<br/>             <b>Truck Share:</b> 42%<br/>             <b>Total AADT:</b> 13,746<br/>             <b>Segment Length:</b> 0.37 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 1<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_9c8798ee4a79fc656dff912e71d60947.setContent(html_e1aa408866b1985f31960fac9c89a840);
+            
+        
+
+        poly_line_ef8085eacb5c4777788ecaa173126f58.bindPopup(popup_9c8798ee4a79fc656dff912e71d60947)
+        ;
+
+        
+    
+    
+            poly_line_ef8085eacb5c4777788ecaa173126f58.bindTooltip(
+                `<div>
+                     Rank #7 - Route 78 (Lebanon) - Score: 71.55
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e7fa66f3bf15d5e1abc906b1a1e51fc3 = L.polyline(
+                [[40.4517444507699, -76.4113367720685], [40.4514403020865, -76.4082913386265], [40.4513322453266, -76.4070895149473], [40.4512789055885, -76.406311980848], [40.4512668615887, -76.405488398209], [40.4512876253363, -76.4045161407972], [40.4513301269133, -76.4038374025146], [40.4513805989965, -76.4030565194961], [40.4514473586671, -76.4022416783631], [40.4515072305415, -76.4018141602379]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_013614a65df5d144eadf58c4d3f156a3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3e1e7434343e12ebe1d2960b7a778ecb = $(`<div id="html_3e1e7434343e12ebe1d2960b7a778ecb" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 78 (Lebanon)</h4>             <b>County Priority Rank:</b> #8<br/>             <b>Viability Score:</b> 71.55 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 5,831 trucks<br/>             <b>Truck Share:</b> 42%<br/>             <b>Total AADT:</b> 13,746<br/>             <b>Segment Length:</b> 0.51 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 1<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_013614a65df5d144eadf58c4d3f156a3.setContent(html_3e1e7434343e12ebe1d2960b7a778ecb);
+            
+        
+
+        poly_line_e7fa66f3bf15d5e1abc906b1a1e51fc3.bindPopup(popup_013614a65df5d144eadf58c4d3f156a3)
+        ;
+
+        
+    
+    
+            poly_line_e7fa66f3bf15d5e1abc906b1a1e51fc3.bindTooltip(
+                `<div>
+                     Rank #8 - Route 78 (Lebanon) - Score: 71.55
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_33a3b068f5c8b0ad6acdc1178d7f47e1 = L.polyline(
+                [[40.4515072305415, -76.4018141602379], [40.4515715380951, -76.401354973804], [40.4516840568547, -76.4006551179257], [40.4518350668331, -76.3998720951201], [40.4522682308721, -76.3978692194475], [40.4526271254008, -76.3961155436212], [40.4532796048539, -76.3930419030793], [40.4533408018843, -76.3927531243599]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_adad6700ecba8966b2fa83a65cc0d1ac = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2dc348e7f7c885ec0c3717e609b55d1a = $(`<div id="html_2dc348e7f7c885ec0c3717e609b55d1a" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 78 (Lebanon)</h4>             <b>County Priority Rank:</b> #9<br/>             <b>Viability Score:</b> 71.55 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 5,831 trucks<br/>             <b>Truck Share:</b> 42%<br/>             <b>Total AADT:</b> 13,746<br/>             <b>Segment Length:</b> 0.5 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 1<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_adad6700ecba8966b2fa83a65cc0d1ac.setContent(html_2dc348e7f7c885ec0c3717e609b55d1a);
+            
+        
+
+        poly_line_33a3b068f5c8b0ad6acdc1178d7f47e1.bindPopup(popup_adad6700ecba8966b2fa83a65cc0d1ac)
+        ;
+
+        
+    
+    
+            poly_line_33a3b068f5c8b0ad6acdc1178d7f47e1.bindTooltip(
+                `<div>
+                     Rank #9 - Route 78 (Lebanon) - Score: 71.55
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_a84723f4993c507d04ab6f3fa901645b = L.polyline(
+                [[40.4533408018843, -76.3927531243599], [40.453639000496, -76.3913459691629], [40.4544381179912, -76.3874933491325], [40.4549978574075, -76.384866177575], [40.4552664876354, -76.3835793373373]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_c81ab2fbfe86afb0646d333a8de45b60 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e2ab48d16bbcc0c762ab624ccddb9e39 = $(`<div id="html_e2ab48d16bbcc0c762ab624ccddb9e39" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 78 (Lebanon)</h4>             <b>County Priority Rank:</b> #10<br/>             <b>Viability Score:</b> 71.55 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 5,831 trucks<br/>             <b>Truck Share:</b> 42%<br/>             <b>Total AADT:</b> 13,746<br/>             <b>Segment Length:</b> 0.5 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_c81ab2fbfe86afb0646d333a8de45b60.setContent(html_e2ab48d16bbcc0c762ab624ccddb9e39);
+            
+        
+
+        poly_line_a84723f4993c507d04ab6f3fa901645b.bindPopup(popup_c81ab2fbfe86afb0646d333a8de45b60)
+        ;
+
+        
+    
+    
+            poly_line_a84723f4993c507d04ab6f3fa901645b.bindTooltip(
+                `<div>
+                     Rank #10 - Route 78 (Lebanon) - Score: 71.55
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_8b9d31c18741e8af569bdbc3d6b9663d = L.polyline(
+                [[40.4552664876354, -76.3835793373373], [40.4554527594338, -76.3826870219009], [40.4559419977056, -76.3803221745762], [40.4561490496992, -76.3793575977601]],
+                {"bubblingMouseEvents": true, "color": "#2e7d32", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2e7d32", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_1dcea91bf55189409b7866343dae82ef);
+        
+    
+        var popup_ac4f36e0e2deeeace24eb4a91713503a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0e29e2b56ba8b2e179908f10dbfc2ee1 = $(`<div id="html_0e29e2b56ba8b2e179908f10dbfc2ee1" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; font-size: 12px; width: 230px;">             <h4 style="margin: 0 0 6px 0; color: #111;">Route 78 (Lebanon)</h4>             <b>County Priority Rank:</b> #11<br/>             <b>Viability Score:</b> 71.55 / 100<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Daily Freight (ADTT):</b> 5,831 trucks<br/>             <b>Truck Share:</b> 42%<br/>             <b>Total AADT:</b> 13,746<br/>             <b>Segment Length:</b> 0.23 mi<br/>             <hr style="margin: 6px 0; border: 0; border-top: 1px solid #ccc;"/>             <b>Competitor Amenities (1-mi):</b> 0<br/>             <b>DC Fast Ports (1-mi):</b> 0<br/>         </div>         </div>`)[0];
+                popup_ac4f36e0e2deeeace24eb4a91713503a.setContent(html_0e29e2b56ba8b2e179908f10dbfc2ee1);
+            
+        
+
+        poly_line_8b9d31c18741e8af569bdbc3d6b9663d.bindPopup(popup_ac4f36e0e2deeeace24eb4a91713503a)
+        ;
+
+        
+    
+    
+            poly_line_8b9d31c18741e8af569bdbc3d6b9663d.bindTooltip(
+                `<div>
+                     Rank #11 - Route 78 (Lebanon) - Score: 71.55
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_1dcea91bf55189409b7866343dae82ef.addTo(map_f50f83bd1b3eb4b93d060190a9d4ebfb);
+        
+    
+            var layer_control_94ac0603660f1c5814257bd969ca0027_layers = {
+                base_layers : {
+                    "Esri World Street Map" : tile_layer_69fcd12f689f0b2b3a46d32be57a0920,
+                },
+                overlays :  {
+                    "Viable Corridors (Gold Tier)" : feature_group_1dcea91bf55189409b7866343dae82ef,
+                },
+            };
+            let layer_control_94ac0603660f1c5814257bd969ca0027 = L.control.layers(
+                layer_control_94ac0603660f1c5814257bd969ca0027_layers.base_layers,
+                layer_control_94ac0603660f1c5814257bd969ca0027_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_f50f83bd1b3eb4b93d060190a9d4ebfb);
+
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_f50f83bd1b3eb4b93d060190a9d4ebfb);
+        
+</script>
+</html>

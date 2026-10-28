@@ -80,8 +80,8 @@ def build_silver_amenities():
 
 def build_silver_corridor_viability():
     """
-    Executes spatial intersection joins against corridor buffers:
-    aggregates competitive density, nearby EV infrastructure, and tract socioeconomic indicators.
+    Executes spatial intersection joins against corridor buffers and computes
+    a standardized 0-100 Multi-Criteria Viability Index.
     """
     table_id = f"{PROJECT_ID}.{DATASET_ID}.silver_corridor_viability"
     logger.info(f"Building composite viability analytics table: {table_id}...")
@@ -133,14 +133,23 @@ def build_silver_corridor_viability():
       cev.dc_fast_ports_1mi,
       cd.avg_county_median_income,
       cd.county_unemployment_rate,
-      -- Viability Index: Heavy commercial volume weighted against charging infrastructure deficit
+      
+      -- Standardized 0-100 Viability Index
       ROUND(
-        (c.truck_pct * 1.5) +
-        (SAFE_DIVIDE(c.adtt_cur, 100) * 2.0) -
-        (cev.dc_fast_ports_1mi * 3.0) -
-        (ca.major_chain_count_1mi * 2.0),
+        -- 1. Truck Volume component (Max 40 pts, saturated at 15,000 ADTT)
+        LEAST(40.0, (SAFE_DIVIDE(c.adtt_cur, 15000.0) * 40.0)) +
+        
+        -- 2. Truck Percentage component (Max 25 pts, saturated at 50% truck share)
+        LEAST(25.0, (SAFE_DIVIDE(c.truck_pct, 50.0) * 25.0)) +
+        
+        -- 3. EV Fast Charging Gap (Max 20 pts: 20 for zero ports, declining to 0 for 4+ ports)
+        GREATEST(0.0, 20.0 - (cev.dc_fast_ports_1mi * 5.0)) +
+        
+        -- 4. Competitor Retail Gap (Max 15 pts: 15 for zero major chains, declining to 0 for 3+ chains)
+        GREATEST(0.0, 15.0 - (ca.major_chain_count_1mi * 5.0)),
         2
       ) AS travel_plaza_viability_score,
+      
       c.geom,
       c.buffer_1mile_geom
     FROM `{PROJECT_ID}.{DATASET_ID}.silver_high_volume_corridors` c

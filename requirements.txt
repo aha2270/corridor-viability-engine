@@ -14,3 +14,12 @@ google-cloud-bigquery-storage==2.43.0
 pyarrow==26.0.0
 
 
+
+folium==0.20.0
+shapely==2.2.0
+
+
+
+matplotlib==3.11.2
+
+

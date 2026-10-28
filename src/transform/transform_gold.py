@@ -52,7 +52,7 @@ def build_gold_travel_plaza_candidates():
       ST_ASTEXT(geom) AS wkt_geometry,
       geom
     FROM `{PROJECT_ID}.{DATASET_ID}.silver_corridor_viability`
-    WHERE travel_plaza_viability_score >= 200
+    WHERE travel_plaza_viability_score >= 70.0
     ORDER BY county_name, travel_plaza_viability_score DESC;
     """
     client.query(sql).result()
