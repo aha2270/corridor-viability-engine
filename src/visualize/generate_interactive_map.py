@@ -442,7 +442,7 @@ def generate_map():
 
     output_dir = Path("docs")
     output_dir.mkdir(parents=True, exist_ok=True)
-    output_file = output_dir / "corridor_viability_map.html"
+    output_file = output_dir / "index.html"
 
     m.save(str(output_file))
     logger.info(f"Interactive dual-view map successfully generated at {output_file}.")
