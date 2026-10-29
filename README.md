@@ -3,6 +3,7 @@
 [![Tests](https://img.shields.io/badge/pytest-passing-brightgreen.svg)](#testing--verification)
 [![Python](https://img.shields.io/badge/python-3.13-blue.svg)](#environment--prerequisites)
 [![GCP](https://img.shields.io/badge/GCP-BigQuery%20%7C%20GCS-orange.svg)](#architecture--medallion-design)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 An enterprise-grade, automated geospatial data engineering pipeline built to evaluate and rank highway corridor segments for commercial travel plaza development. Utilizing a Medallion Architecture across Google Cloud Platform (Google Cloud Storage and BigQuery) and Python, the engine extracts, transforms, scores, and visualizes multimodal freight, demographic, and infrastructure datasets across Pennsylvania interstate corridors.
 
