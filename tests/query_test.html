@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beyond Traffic Counts — Query Entry</title>
+  <style>
+    :root {
+      --navy: #0f172a;
+      --navy-hover: #1e293b;
+      --accent: #0f5275;
+      --accent-hover: #0a3d58;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --border: #cbd5e1;
+      --text: #0f172a;
+      --muted: #64748b;
+      --disabled-bg: #e2e8f0;
+      --disabled-text: #94a3b8;
+    }
+
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .query-card {
+      background: var(--card);
+      width: 100%;
+      max-width: 540px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      border: 1px solid var(--border);
+      padding: 32px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .header h1 {
+      margin: 0 0 6px;
+      font-size: 1.45rem;
+      color: var(--navy);
+    }
+
+    .header p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .section {
+      margin-bottom: 26px;
+    }
+
+    .section-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+    }
+
+    .select-all-link {
+      font-size: 0.8rem;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-weight: 600;
+    }
+
+    .select-all-link:hover { text-decoration: underline; }
+
+    /* Searchable Multi-Select Container */
+    .multiselect-wrapper {
+      position: relative;
+    }
+
+    .input-box {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      padding: 6px 10px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      cursor: text;
+      transition: border-color 0.15s;
+    }
+
+    .input-box:focus-within {
+      border-color: var(--accent);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 4px 9px;
+      border-radius: 6px;
+    }
+
+    .pill button {
+      background: none;
+      border: none;
+      color: #cbd5e1;
+      cursor: pointer;
+      font-size: 0.95rem;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .pill button:hover { color: #fff; }
+
+    #countySearch {
+      border: none;
+      outline: none;
+      flex: 1;
+      min-width: 140px;
+      font-size: 0.92rem;
+      padding: 4px 2px;
+    }
+
+    .dropdown-list {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+      z-index: 20;
+      display: none;
+    }
+
+    .dropdown-list.open { display: block; }
+
+    .dropdown-item {
+      padding: 9px 12px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dropdown-item:hover { background: #f8fafc; }
+
+    .dropdown-item.selected {
+      background: #eff6ff;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Archetype Exclusive Toggle Buttons */
+    .archetype-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .archetype-btn {
+      padding: 13px 14px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .archetype-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 3px 8px rgba(15, 82, 117, 0.25);
+    }
+
+    .archetype-btn.inactive {
+      background: var(--disabled-bg);
+      color: var(--disabled-text);
+      border-color: #cbd5e1;
+    }
+
+    .archetype-btn.inactive:hover {
+      background: #cbd5e1;
+      color: #475569;
+    }
+
+    /* Run Analysis CTA */
+    .run-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .run-btn:hover:not(:disabled) { background: var(--navy-hover); }
+
+    .run-btn:disabled {
+      background: var(--disabled-bg);
+      color: var(--disabled-text);
+      cursor: not-allowed;
+    }
+
+    /* Logic Preview Banner (For Prototyping Only) */
+    .debug-output {
+      margin-top: 18px;
+      padding: 12px;
+      background: #f8fafc;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8rem;
+      color: #334155;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="query-card">
+    <div class="header">
+      <h1>Corridor Viability Query</h1>
+      <p>Select target Pennsylvania counties and starting evaluation view</p>
+    </div>
+
+    <!-- 1. Searchable County Multi-Select -->
+    <div class="section">
+      <div class="section-label">
+        <span>Target Counties</span>
+        <button type="button" class="select-all-link" id="selectAllBtn">Select All Available</button>
+      </div>
+
+      <div class="multiselect-wrapper" id="multiselectWrapper">
+        <div class="input-box" id="inputBox">
+          <!-- Selected county pills render here -->
+          <input type="text" id="countySearch" placeholder="Type to search counties..." autocomplete="off" />
+        </div>
+        <div class="dropdown-list" id="dropdownList"></div>
+      </div>
+    </div>
+
+    <!-- 2. Exclusive View Selection (Commercial vs. Commuter) -->
+    <div class="section">
+      <div class="section-label">
+        <span>Starting View Mode</span>
+      </div>
+      <div class="archetype-group">
+        <button type="button" class="archetype-btn active" data-mode="commercial" id="btnCommercial">
+          Commercial Travel Plaza
+        </button>
+        <button type="button" class="archetype-btn inactive" data-mode="commuter" id="btnCommuter">
+          Commuter Convenience
+        </button>
+      </div>
+    </div>
+
+    <!-- 3. Run Analysis Trigger -->
+    <button type="button" class="run-btn" id="runAnalysisBtn" disabled>
+      Run Analysis
+    </button>
+
+    <div class="debug-output" id="debugOutput"></div>
+  </div>
+
+  <script>
+    // Dynamically derived from your active dataset (automatically expands as all 67 PA counties are added)
+    const AVAILABLE_COUNTIES = ["Cumberland", "Dauphin", "Lebanon"];
+
+    let selectedCounties = new Set();
+    let selectedMode = "commercial"; // Default starting view
+
+    const inputBox = document.getElementById("inputBox");
+    const searchInput = document.getElementById("countySearch");
+    const dropdownList = document.getElementById("dropdownList");
+    const selectAllBtn = document.getElementById("selectAllBtn");
+    const btnCommercial = document.getElementById("btnCommercial");
+    const btnCommuter = document.getElementById("btnCommuter");
+    const runAnalysisBtn = document.getElementById("runAnalysisBtn");
+    const debugOutput = document.getElementById("debugOutput");
+
+    // Render selected county pills + filtered dropdown options
+    function renderCountySelector() {
+      // Remove existing pills
+      inputBox.querySelectorAll(".pill").forEach(p => p.remove());
+
+      // Insert active pills before the text input
+      Array.from(selectedCounties).sort().forEach(county => {
+        const pill = document.createElement("span");
+        pill.className = "pill";
+        pill.innerHTML = `${county} <button type="button" aria-label="Remove ${county}">&times;</button>`;
+        pill.querySelector("button").addEventListener("click", (e) => {
+          e.stopPropagation();
+          selectedCounties.delete(county);
+          renderCountySelector();
+        });
+        inputBox.insertBefore(pill, searchInput);
+      });
+
+      searchInput.placeholder = selectedCounties.size === 0 ? "Type to search counties..." : "Add another...";
+
+      // Filter dropdown items based on search query
+      const query = searchInput.value.trim().toLowerCase();
+      const filtered = AVAILABLE_COUNTIES.filter(c => c.toLowerCase().includes(query));
+
+      dropdownList.innerHTML = "";
+      if (filtered.length === 0) {
+        dropdownList.innerHTML = `<div class="dropdown-item" style="color:#94a3b8; cursor:default;">No matching counties</div>`;
+      } else {
+        filtered.forEach(county => {
+          const isSelected = selectedCounties.has(county);
+          const item = document.createElement("div");
+          item.className = `dropdown-item ${isSelected ? "selected" : ""}`;
+          item.innerHTML = `<span>${county}</span><span>${isSelected ? "✓" : ""}</span>`;
+          item.addEventListener("click", () => {
+            if (isSelected) {
+              selectedCounties.delete(county);
+            } else {
+              selectedCounties.add(county);
+            }
+            searchInput.value = "";
+            renderCountySelector();
+            searchInput.focus();
+          });
+          dropdownList.appendChild(item);
+        });
+      }
+
+      // Toggle "Select All" vs "Clear All" text
+      selectAllBtn.textContent = selectedCounties.size === AVAILABLE_COUNTIES.length
+        ? "Clear All"
+        : "Select All Available";
+
+      // Enable Run Analysis only if >= 1 county is chosen
+      runAnalysisBtn.disabled = selectedCounties.size === 0;
+    }
+
+    // Open dropdown on input focus or container click
+    inputBox.addEventListener("click", () => {
+      searchInput.focus();
+      dropdownList.classList.add("open");
+    });
+
+    searchInput.addEventListener("focus", () => dropdownList.classList.add("open"));
+    searchInput.addEventListener("input", () => {
+      dropdownList.classList.add("open");
+      renderCountySelector();
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!document.getElementById("multiselectWrapper").contains(e.target)) {
+        dropdownList.classList.remove("open");
+      }
+    });
+
+    // Select All / Clear All handler
+    selectAllBtn.addEventListener("click", () => {
+      if (selectedCounties.size === AVAILABLE_COUNTIES.length) {
+        selectedCounties.clear();
+      } else {
+        AVAILABLE_COUNTIES.forEach(c => selectedCounties.add(c));
+      }
+      renderCountySelector();
+    });
+
+    // Exclusive View Mode Toggle (Commercial vs. Commuter)
+    function setArchetypeMode(mode) {
+      selectedMode = mode;
+      if (mode === "commercial") {
+        btnCommercial.classList.replace("inactive", "active");
+        btnCommuter.classList.replace("active", "inactive");
+      } else {
+        btnCommuter.classList.replace("inactive", "active");
+        btnCommercial.classList.replace("active", "inactive");
+      }
+    }
+
+    btnCommercial.addEventListener("click", () => setArchetypeMode("commercial"));
+    btnCommuter.addEventListener("click", () => setArchetypeMode("commuter"));
+
+    // Run Analysis Trigger
+    runAnalysisBtn.addEventListener("click", () => {
+      const queryPayload = {
+        counties: Array.from(selectedCounties).sort(),
+        startingView: selectedMode
+      };
+
+      // In production, this hides the query modal/page and initializes your map view
+      debugOutput.style.display = "block";
+      debugOutput.textContent = `Query Launched -> ${JSON.stringify(queryPayload, null, 2)}`;
+    });
+
+    // Initial render
+    renderCountySelector();
+  </script>
+</body>
+</html>
