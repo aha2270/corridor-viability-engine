@@ -69,7 +69,7 @@ The pipeline follows a tiered **Medallion Data Architecture** orchestrated via P
   ▼
 [ Presentation & Artifacts ]
   ├── data/processed/gold_travel_plaza_candidates.csv (Flat file export)
-  └── docs/corridor_viability_map.html (Standalone Folium/Leaflet application)
+  └── docs/index.html (Standalone Folium/Leaflet application)
 ```
 
 The system architecture diagram is available at `docs/architecture_diagram.png`.
@@ -108,7 +108,7 @@ corridor-viability-engine/
 │       └── gold_travel_plaza_candidates.csv # Curated, ranked delivery export
 ├── docs/
 │   ├── architecture_diagram.png     # System architecture diagram
-│   ├── corridor_viability_map.html  # Standalone interactive Folium application
+│   ├── index.html  # Standalone interactive Folium application
 │   └── data_dictionary.md           # Schema definitions and data contracts
 ├── src/
 │   ├── extract/
@@ -197,7 +197,7 @@ python main.py
 2. **Raw Staging:** Loads Bronze datasets into schema-enforced BigQuery tables (`raw_*`).
 3. **Silver Transformation:** Executes spatial buffering (`ST_BUFFER`), spatial intersection joins (`ST_INTERSECTS`), and calculates the 0–100 MCDA score.
 4. **Gold Mart Aggregation:** Filters high-viability corridors ($\ge 70.0$), computes sequential `ROW_NUMBER()` county priority rankings, and exports results to `data/processed/gold_travel_plaza_candidates.csv`.
-5. **Presentation Generation:** Compiles the self-contained interactive map into `docs/corridor_viability_map.html`.
+5. **Presentation Generation:** Compiles the self-contained interactive map into `docs/index.html`.
 
 ---
 
@@ -220,7 +220,7 @@ python -m pytest -v
 
 ## Interactive Visualization
 
-The presentation layer compiles into a standalone, browser-executable GIS application located at `docs/corridor_viability_map.html`.
+The presentation layer compiles into a standalone, browser-executable GIS application located at `docs/index.html`.
 
 ### Features
 - **Base Layer:** High-contrast Esri World Street Map tiles.
@@ -228,7 +228,7 @@ The presentation layer compiles into a standalone, browser-executable GIS applic
 - **Directional Highway Fidelity:** Visualizes opposing interstate carriageways (Northbound and Southbound centerlines) with crisp, non-overlapping line weights.
 - **Bidirectional Leaderboard:** A floating sidebar displays ranked corridor segments. Hovering over a leaderboard entry highlights the corresponding highway segment on the map in neon magenta; clicking an entry smoothly flies the camera to the segment center and triggers its detailed metrics popup.
 
-To view the dashboard, open `docs/corridor_viability_map.html` in any modern web browser.
+To view the dashboard, open `docs/index.html` in any modern web browser.
 
 ---
 

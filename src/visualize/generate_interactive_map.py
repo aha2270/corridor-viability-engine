@@ -75,6 +75,9 @@ def generate_map():
 
     logger.info(f"Loaded {len(df)} candidate segments for interactive rendering.")
 
+    # Dynamically extract available counties for the Query-First dropdown
+    available_counties = sorted(df["county_name"].dropna().unique().tolist())
+
     # Calculate score bounds for colormap normalization
     tp_min = float(df["travel_plaza_viability_score"].min())
     tp_max = float(df["travel_plaza_viability_score"].max())
@@ -104,7 +107,6 @@ def generate_map():
     leaderboard_data = []
 
     for _, row in df.iterrows():
-        # Guard against NaN/Null geometry strings
         if pd.isna(row.get("wkt_geometry")) or not isinstance(row["wkt_geometry"], str):
             continue
         geom = wkt.loads(row["wkt_geometry"])
@@ -152,8 +154,232 @@ def generate_map():
         "features": features
     }
 
-    # Inject client-side application state, UI components, and Leaflet layer hooks
+    # Inject Query-First Entry Overlay + Map UI & Interactive Leaflet Hooks
     app_script = f"""
+    <style>
+        #query-overlay {{
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.78);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }}
+        #query-overlay.hidden {{
+            display: none;
+        }}
+        .q-card {{
+            background: #ffffff;
+            width: 100%;
+            max-width: 520px;
+            border-radius: 12px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            padding: 30px;
+            color: #0f172a;
+        }}
+        .q-header {{
+            text-align: center;
+            margin-bottom: 24px;
+        }}
+        .q-header h2 {{
+            margin: 0 0 6px;
+            font-size: 21px;
+            color: #0f172a;
+        }}
+        .q-header p {{
+            margin: 0;
+            font-size: 13px;
+            color: #64748b;
+        }}
+        .q-section {{
+            margin-bottom: 22px;
+        }}
+        .q-label-row {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }}
+        .q-select-all {{
+            background: none;
+            border: none;
+            color: #0f5275;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+        }}
+        .q-select-all:hover {{ text-decoration: underline; }}
+        .q-multiselect {{
+            position: relative;
+        }}
+        .q-input-box {{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            min-height: 42px;
+            padding: 6px 10px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            background: #ffffff;
+            cursor: text;
+        }}
+        .q-input-box:focus-within {{
+            border-color: #0f5275;
+        }}
+        .q-pill {{
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #0f172a;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 5px;
+        }}
+        .q-pill button {{
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1;
+            padding: 0;
+        }}
+        .q-pill button:hover {{ color: #ffffff; }}
+        #q-county-search {{
+            border: none;
+            outline: none;
+            flex: 1;
+            min-width: 140px;
+            font-size: 13px;
+            padding: 4px 2px;
+        }}
+        .q-dropdown {{
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            max-height: 190px;
+            overflow-y: auto;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+            z-index: 30;
+            display: none;
+        }}
+        .q-dropdown.open {{ display: block; }}
+        .q-dropdown-item {{
+            padding: 9px 12px;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }}
+        .q-dropdown-item:hover {{ background: #f8fafc; }}
+        .q-dropdown-item.selected {{
+            background: #eff6ff;
+            color: #0f5275;
+            font-weight: 700;
+        }}
+        .q-mode-grid {{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }}
+        .q-mode-btn {{
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1.5px solid #cbd5e1;
+            transition: all 0.15s ease;
+        }}
+        .q-mode-btn.active {{
+            background: #0f5275;
+            color: #ffffff;
+            border-color: #0f5275;
+        }}
+        .q-mode-btn.inactive {{
+            background: #e2e8f0;
+            color: #94a3b8;
+        }}
+        .q-mode-btn.inactive:hover {{
+            background: #cbd5e1;
+            color: #475569;
+        }}
+        .q-run-btn {{
+            width: 100%;
+            padding: 13px;
+            background: #0f172a;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }}
+        .q-run-btn:hover:not(:disabled) {{ background: #1e293b; }}
+        .q-run-btn:disabled {{
+            background: #e2e8f0;
+            color: #94a3b8;
+            cursor: not-allowed;
+        }}
+    </style>
+
+    <!-- Query-First Start Overlay -->
+    <div id="query-overlay">
+        <div class="q-card">
+            <div class="q-header">
+                <h2>Beyond Traffic Counts</h2>
+                <p>Select target Pennsylvania counties and starting evaluation view</p>
+            </div>
+
+            <div class="q-section">
+                <div class="q-label-row">
+                    <span>Target Counties</span>
+                    <button type="button" class="q-select-all" id="q-select-all-btn">Select All Available</button>
+                </div>
+                <div class="q-multiselect" id="q-multiselect-wrapper">
+                    <div class="q-input-box" id="q-input-box">
+                        <input type="text" id="q-county-search" placeholder="Type to search counties..." autocomplete="off" />
+                    </div>
+                    <div class="q-dropdown" id="q-dropdown-list"></div>
+                </div>
+            </div>
+
+            <div class="q-section">
+                <div class="q-label-row">
+                    <span>Starting View Mode</span>
+                </div>
+                <div class="q-mode-grid">
+                    <button type="button" class="q-mode-btn active" id="q-btn-commercial">
+                        🚚 Commercial Travel Plaza
+                    </button>
+                    <button type="button" class="q-mode-btn inactive" id="q-btn-commuter">
+                        🚗 Commuter Convenience
+                    </button>
+                </div>
+            </div>
+
+            <button type="button" class="q-run-btn" id="q-run-btn" disabled>
+                Run Analysis
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Control Bar -->
     <div id="archetype-control" style="
         position: fixed;
         top: 15px;
@@ -189,8 +415,19 @@ def generate_map():
             cursor: pointer;
             transition: all 0.2s ease;
         ">🚗 Commuter Convenience</button>
+        <button id="btn-new-query" onclick="openQueryOverlay()" style="
+            background: #f1f5f9;
+            color: #0f172a;
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        ">🔍 Change Counties</button>
     </div>
 
+    <!-- Ranked Corridors Sidebar -->
     <div id="corridor-sidebar" style="
         position: fixed;
         top: 65px;
@@ -218,6 +455,7 @@ def generate_map():
         </div>
     </div>
 
+    <!-- Legend -->
     <div id="legend-box" style="
         position: fixed;
         bottom: 25px;
@@ -245,6 +483,7 @@ def generate_map():
     </div>
 
     <script>
+        const AVAILABLE_COUNTIES = {json.dumps(available_counties)};
         const geojsonData = {json.dumps(geojson_collection)};
         const leaderboardData = {json.dumps(leaderboard_data)};
         const scoreBounds = {{
@@ -252,10 +491,16 @@ def generate_map():
             "commuter_market": {{ min: {cm_min}, max: {cm_max} }}
         }};
 
+        // Query Overlay State
+        let qSelectedCounties = new Set();
+        let qSelectedMode = "travel_plaza";
+
+        // Active Map State
+        let activeCounties = new Set(AVAILABLE_COUNTIES);
         let activeMode = "travel_plaza";
         let geojsonLayer = null;
         let mapInstance = null;
-        const segmentLayers = {{}};
+        let segmentLayers = {{}};
 
         function getLeafletMap() {{
             for (let k in window) {{
@@ -264,6 +509,121 @@ def generate_map():
                 }}
             }}
             return null;
+        }}
+
+        function openQueryOverlay() {{
+            document.getElementById("query-overlay").classList.remove("hidden");
+        }}
+
+        function renderQuerySelector() {{
+            const inputBox = document.getElementById("q-input-box");
+            const searchInput = document.getElementById("q-county-search");
+            const dropdownList = document.getElementById("q-dropdown-list");
+            const selectAllBtn = document.getElementById("q-select-all-btn");
+            const runBtn = document.getElementById("q-run-btn");
+
+            inputBox.querySelectorAll(".q-pill").forEach(p => p.remove());
+
+            Array.from(qSelectedCounties).sort().forEach(county => {{
+                const pill = document.createElement("span");
+                pill.className = "q-pill";
+                pill.innerHTML = `${{county}} <button type="button" aria-label="Remove ${{county}}">&times;</button>`;
+                pill.querySelector("button").addEventListener("click", (e) => {{
+                    e.stopPropagation();
+                    qSelectedCounties.delete(county);
+                    renderQuerySelector();
+                }});
+                inputBox.insertBefore(pill, searchInput);
+            }});
+
+            searchInput.placeholder = qSelectedCounties.size === 0 ? "Type to search counties..." : "Add another...";
+
+            const query = searchInput.value.trim().toLowerCase();
+            const filtered = AVAILABLE_COUNTIES.filter(c => c.toLowerCase().includes(query));
+
+            dropdownList.innerHTML = "";
+            if (filtered.length === 0) {{
+                dropdownList.innerHTML = `<div class="q-dropdown-item" style="color:#94a3b8; cursor:default;">No matching counties</div>`;
+            }} else {{
+                filtered.forEach(county => {{
+                    const isSelected = qSelectedCounties.has(county);
+                    const item = document.createElement("div");
+                    item.className = `q-dropdown-item ${{isSelected ? "selected" : ""}}`;
+                    item.innerHTML = `<span>${{county}}</span><span>${{isSelected ? "✓" : ""}}</span>`;
+                    item.addEventListener("click", () => {{
+                        if (isSelected) {{
+                            qSelectedCounties.delete(county);
+                        }} else {{
+                            qSelectedCounties.add(county);
+                        }}
+                        searchInput.value = "";
+                        renderQuerySelector();
+                        searchInput.focus();
+                    }});
+                    dropdownList.appendChild(item);
+                }});
+            }}
+
+            selectAllBtn.textContent = qSelectedCounties.size === AVAILABLE_COUNTIES.length
+                ? "Clear All"
+                : "Select All Available";
+
+            runBtn.disabled = qSelectedCounties.size === 0;
+        }}
+
+        function setQueryMode(mode) {{
+            qSelectedMode = mode;
+            const btnComm = document.getElementById("q-btn-commercial");
+            const btnMuter = document.getElementById("q-btn-commuter");
+            if (mode === "travel_plaza") {{
+                btnComm.classList.replace("inactive", "active");
+                btnMuter.classList.replace("active", "inactive");
+            }} else {{
+                btnMuter.classList.replace("inactive", "active");
+                btnComm.classList.replace("active", "inactive");
+            }}
+        }}
+
+        function applyQueryToMap() {{
+            if (!mapInstance) return;
+            activeCounties = new Set(qSelectedCounties);
+
+            // Clear existing GeoJSON layer
+            if (geojsonLayer) {{
+                mapInstance.removeLayer(geojsonLayer);
+            }}
+            segmentLayers = {{}};
+
+            // Filter GeoJSON features to selected counties
+            const filteredFeatures = geojsonData.features.filter(f =>
+                activeCounties.has(f.properties.county_name)
+            );
+
+            geojsonLayer = L.geoJSON({{ type: "FeatureCollection", features: filteredFeatures }}, {{
+                style: feature => ({{
+                    color: activeMode === "travel_plaza" ? feature.properties.tp_color : feature.properties.cm_color,
+                    weight: 4,
+                    opacity: 0.85
+                }}),
+                onEachFeature: (feature, layer) => {{
+                    const id = feature.properties.object_id;
+                    segmentLayers[id] = layer;
+                    layer.bindPopup(buildPopupContent(feature.properties, activeMode));
+                    layer.on("mouseover", () => highlightSegment(id));
+                    layer.on("mouseout", () => resetSegment(id));
+                }}
+            }}).addTo(mapInstance);
+
+            // Fit map bounds to the selected counties' road network
+            if (filteredFeatures.length > 0) {{
+                mapInstance.fitBounds(geojsonLayer.getBounds(), {{ padding: [30, 30] }});
+            }}
+
+            // Apply chosen starting archetype mode & refresh sidebar
+            setMode(qSelectedMode);
+
+            // Hide query overlay
+            document.getElementById("query-overlay").classList.add("hidden");
         }}
 
         function buildPopupContent(props, mode) {{
@@ -302,7 +662,8 @@ def generate_map():
             const container = document.getElementById("leaderboard-container");
             container.innerHTML = "";
 
-            const sorted = [...leaderboardData].sort((a, b) => {{
+            const filtered = leaderboardData.filter(item => activeCounties.has(item.county_name));
+            const sorted = [...filtered].sort((a, b) => {{
                 return mode === "travel_plaza" ? b.tp_score - a.tp_score : b.cm_score - a.cm_score;
             }});
 
@@ -368,7 +729,6 @@ def generate_map():
             lMid.innerText = ((b.min + b.max) / 2).toFixed(1);
             lMax.innerText = b.max.toFixed(1);
 
-            // Re-style segments and update popups
             Object.keys(segmentLayers).forEach(objId => {{
                 const layer = segmentLayers[objId];
                 const p = layer.feature.properties;
@@ -411,27 +771,44 @@ def generate_map():
         }}
 
         window.addEventListener("DOMContentLoaded", () => {{
+            // Wire Query Overlay event listeners
+            const inputBox = document.getElementById("q-input-box");
+            const searchInput = document.getElementById("q-county-search");
+            const dropdownList = document.getElementById("q-dropdown-list");
+
+            inputBox.addEventListener("click", () => {{
+                searchInput.focus();
+                dropdownList.classList.add("open");
+            }});
+            searchInput.addEventListener("focus", () => dropdownList.classList.add("open"));
+            searchInput.addEventListener("input", () => {{
+                dropdownList.classList.add("open");
+                renderQuerySelector();
+            }});
+            document.addEventListener("click", (e) => {{
+                if (!document.getElementById("q-multiselect-wrapper").contains(e.target)) {{
+                    dropdownList.classList.remove("open");
+                }}
+            }});
+            document.getElementById("q-select-all-btn").addEventListener("click", () => {{
+                if (qSelectedCounties.size === AVAILABLE_COUNTIES.length) {{
+                    qSelectedCounties.clear();
+                }} else {{
+                    AVAILABLE_COUNTIES.forEach(c => qSelectedCounties.add(c));
+                }}
+                renderQuerySelector();
+            }});
+            document.getElementById("q-btn-commercial").addEventListener("click", () => setQueryMode("travel_plaza"));
+            document.getElementById("q-btn-commuter").addEventListener("click", () => setQueryMode("commuter_market"));
+            document.getElementById("q-run-btn").addEventListener("click", applyQueryToMap);
+
+            renderQuerySelector();
+
+            // Initialize Leaflet map instance in the background
             const checkMap = setInterval(() => {{
                 mapInstance = getLeafletMap();
                 if (mapInstance) {{
                     clearInterval(checkMap);
-
-                    geojsonLayer = L.geoJSON(geojsonData, {{
-                        style: feature => ({{
-                            color: feature.properties.tp_color,
-                            weight: 4,
-                            opacity: 0.85
-                        }}),
-                        onEachFeature: (feature, layer) => {{
-                            const id = feature.properties.object_id;
-                            segmentLayers[id] = layer;
-                            layer.bindPopup(buildPopupContent(feature.properties, activeMode));
-                            layer.on("mouseover", () => highlightSegment(id));
-                            layer.on("mouseout", () => resetSegment(id));
-                        }}
-                    }}).addTo(mapInstance);
-
-                    renderLeaderboard("travel_plaza");
                 }}
             }}, 150);
         }});

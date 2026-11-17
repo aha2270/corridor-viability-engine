@@ -58,6 +58,6 @@ def test_gold_tier_sequential_ranking(bq_client):
 
 def test_interactive_map_artifact():
     """Validates that the self-contained HTML map artifact was compiled."""
-    html_path = Path("docs/corridor_viability_map.html")
+    html_path = Path("docs/index.html")
     assert html_path.exists(), f"Interactive map missing at {html_path}"
     assert html_path.stat().st_size > 10000, "Interactive map artifact is truncated or empty."

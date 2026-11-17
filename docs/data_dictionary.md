@@ -30,7 +30,7 @@ This document defines the schema contracts, source provenance, transformations, 
 [ Gold Layer: Analytical Mart & Delivery ]
   │  ├── gold_travel_plaza_candidates (Ranked priority mart)
   │  ├── data/processed/gold_travel_plaza_candidates.csv
-  │  └── docs/corridor_viability_map.html (Interactive Folium map)
+  │  └── docs/index.html (Interactive Folium map)
 ```
 
 ---
